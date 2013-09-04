@@ -1,9 +1,0 @@
-ADMIN_USER = ''
-ADMIN_EMAIL = ''
-
-DB_ENGINE = ''
-DB_NAME = ''
-DB_USER = ''
-DB_PASSWORD = ''
-DB_HOST = ''
-DB_PORT = ''
