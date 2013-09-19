@@ -3,6 +3,9 @@ try:
 except ImportError:
    pass
 
+import os
+
+
 # Django settings for capstone project.
 
 DEBUG = True
@@ -25,6 +28,8 @@ DATABASES = {
         'PORT': DB_PORT,                      # Set to empty string for default.
     }
 }
+
+APPEND_SLASH = True;
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
@@ -77,6 +82,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    "static/",
 )
 
 # List of finder classes that know how to find static files in
@@ -112,7 +118,6 @@ ROOT_URLCONF = 'capstone.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'capstone.wsgi.application'
 
-import os
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\','/'),)
 
 INSTALLED_APPS = (
@@ -127,6 +132,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'home',
+    'login',
 )
 
 # A sample logging configuration. The only tangible logging

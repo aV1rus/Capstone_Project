@@ -1,0 +1,46 @@
+#logSection
+{
+    width:500px;
+    height:300px;
+    margin:auto;
+    border:inset 1px black;
+    box-shadow: 4px 4px 10px black;
+    border-radius:10px;
+    position:absolute;
+    top:30%;
+    left:30%;
+    color:white;
+    text-shadow: 0 -2px 4px white;
+    text-align:center ;
+    background-image: -webkit-radial-gradient(45% 30%,ellipse, #DCD191 0%,rgba(0,0,0,.6) 150%);
+    background-image: -moz-radial-gradient(40% 30%,ellipse, #DCD191 0%,rgba(0,0,0,.6) 150%);
+    background-repeat:no-repeat;
+
+}
+input
+{
+    outline: none;
+    width:300px;
+    margin-top:30px;
+    height:40px;
+    font-size: 1.4em;
+    font-weight: bold;
+    color:blue;
+}
+input[type= 'submit']
+{
+    color:#354E71;
+    background-color:#CCC;
+}
+input:focus
+{
+    border:none;
+    box-shadow: 4px 4px 10px #D3A46E;
+}
+html{
+
+        background-image: -webkit-radial-gradient(45% 30%,ellipse, #AEB05D 0%,rgba(0,0,0,.6) 150%);
+        background-image: -moz-radial-gradient(40% 30%,ellipse, #AEB05D 0%,rgba(0,0,0,.6) 150%);
+        background-repeat:no-repeat;
+        background-size: 100% 1000px;
+}
