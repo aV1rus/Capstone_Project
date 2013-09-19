@@ -1,4 +1,4 @@
-from dev_settings import *
+from capstone.dev_settings import *
 
 import os
 
