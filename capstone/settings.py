@@ -1,7 +1,4 @@
-try:
-   from dev_settings import *
-except ImportError:
-   pass
+from dev_settings import *
 
 import os
 
