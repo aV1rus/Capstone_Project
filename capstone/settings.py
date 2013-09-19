@@ -1,7 +1,5 @@
-try:
-   from dev_settings import *
-except ImportError:
-   pass
+from capstone.dev_settings import *
+
 
 import os
 
