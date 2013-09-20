@@ -25,7 +25,10 @@ input
     height:40px;
     font-size: 1.4em;
     font-weight: bold;
-    color:blue;
+    color:#354E71;
+    transition-delay:.1s;
+    transition-duration:.5s;
+    text-align: center;
 }
 input[type= 'submit']
 {
@@ -34,8 +37,7 @@ input[type= 'submit']
 }
 input:focus
 {
-    border:none;
-    box-shadow: 4px 4px 10px #D3A46E;
+    box-shadow: 2px 4px 5px #D3A46E;
 }
 html{
 
@@ -43,4 +45,15 @@ html{
         background-image: -moz-radial-gradient(40% 30%,ellipse, #AEB05D 0%,rgba(0,0,0,.6) 150%);
         background-repeat:no-repeat;
         background-size: 100% 1000px;
+}
+.errorlist
+{
+    display:none;
+}
+.login_error
+{
+    color:white;
+    background-color: darkred;
+    text-shadow: 0 -1px 4px black;
+    margin:3px;
 }

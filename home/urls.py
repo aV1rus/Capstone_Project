@@ -1,1 +1,5 @@
-__author__ = 'Habib'
+from django.conf.urls import patterns, url
+
+urlpatterns = patterns('home.views',
+   url(r'^$', 'home'),
+)

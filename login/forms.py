@@ -1,6 +1,7 @@
 from django import forms
-from login.models import User
+from login.models import Profile
 
-class RegForm(forms.ModelForm):
-    class meta:
-        model = User
+class ConnectionForm(forms.Form):
+    username = forms.CharField(max_length=30,widget=forms.TextInput(attrs={'placeholder':'Username'}), label="")
+    password = forms.CharField(max_length=30, widget=forms.PasswordInput(attrs={'placeholder':'Password'}),label="")
+    

@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}
+{% endblock %}
+{% block content %}
 
-</body>
-</html>
+    {{ request.user.first_name}}
+
+{% endblock %}
