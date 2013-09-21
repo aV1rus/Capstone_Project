@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <article class = "welcome">
+     Welcome to <a href = "http://www.spsu.edu" style = "color:olive;" >SPSU's</a> Social Network..Register Here and Get Started!<br/>
+
+    Click <a href="{% url "login.views.connect" %}"> Here</a> to Login
+
+    </article>
+    <section id = "registration_section">
+        <form action = "" method = "POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Register">
+        </form>
+   </section>
+    {% if error %}
+
+        {{ message }}
+    {% endif %}
+{% endblock %}

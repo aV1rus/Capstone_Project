@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% block title %}
+    Welcome {{ request.user.username }}
 {% endblock %}
 {% block content %}
 
-    {{ request.user.first_name}}
+
 
 {% endblock %}

@@ -1,10 +1,42 @@
-#logSection
+html
+{
+
+        background-image: -webkit-radial-gradient(45% 30%,ellipse, #FFF8DC 0%,rgba(0,0,0,.6) 150%);
+        background-image: -moz-radial-gradient(40% 30%,ellipse, #FFF8DC 0%,rgba(0,0,0,.6) 150%);
+        background-repeat:repeat-y;
+        background-size: 100% 1000px;
+}
+
+.welcome
+{
+    position:absolute;
+    top:20%;
+    left:5%;
+    width:700px;
+    height:300px;
+    padding:20px;
+    color:#834C24;
+    text-shadow:0 1px .5px black;
+    font-size: 48pt;
+    display: inline-block;
+
+}
+.welcome a
+{
+    color:#551a8b;
+    transition-delay:.1s;
+    transition-duration:.5s;
+}
+.welcome a:hover
+{
+    color:darkred;
+}
+#login_section,#registration_section
 {
     width:500px;
     height:300px;
     margin:auto;
     border:inset 1px black;
-    box-shadow: 4px 4px 10px black;
     border-radius:10px;
     position:absolute;
     top:30%;
@@ -12,39 +44,38 @@
     color:white;
     text-shadow: 0 -2px 4px white;
     text-align:center ;
-    background-image: -webkit-radial-gradient(45% 30%,ellipse, #DCD191 0%,rgba(0,0,0,.6) 150%);
-    background-image: -moz-radial-gradient(40% 30%,ellipse, #DCD191 0%,rgba(0,0,0,.6) 150%);
+    background-image: -webkit-radial-gradient(45% 30%,ellipse, #1F1209 0%,rgba(0,0,0,.6) 150%);
+    background-image: -moz-radial-gradient(40% 30%,ellipse, #1F1209 0%,rgba(0,0,0,.6) 150%);
     background-repeat:no-repeat;
-
 }
+#registration_section
+{
+    height: 550px;
+    top:10%;
+    left:60%;
+}
+
 input
 {
     outline: none;
     width:300px;
     margin-top:30px;
     height:40px;
-    font-size: 1.4em;
+    font-size:15pt;
     font-weight: bold;
-    color:#354E71;
+    color:#834C24;
     transition-delay:.1s;
     transition-duration:.5s;
     text-align: center;
 }
 input[type= 'submit']
 {
-    color:#354E71;
+    color:#551a8b;
     background-color:#CCC;
 }
 input:focus
 {
     box-shadow: 2px 4px 5px #D3A46E;
-}
-html{
-
-        background-image: -webkit-radial-gradient(45% 30%,ellipse, #AEB05D 0%,rgba(0,0,0,.6) 150%);
-        background-image: -moz-radial-gradient(40% 30%,ellipse, #AEB05D 0%,rgba(0,0,0,.6) 150%);
-        background-repeat:no-repeat;
-        background-size: 100% 1000px;
 }
 .errorlist
 {
@@ -52,8 +83,11 @@ html{
 }
 .login_error
 {
-    color:white;
-    background-color: darkred;
-    text-shadow: 0 -1px 4px black;
-    margin:3px;
+    /*position: absolute;*/
+    font-size: 32pt;
+    text-align: center;
+    text-shadow: 0 1px 1px black;
+    color:#834C24;
 }
+
+

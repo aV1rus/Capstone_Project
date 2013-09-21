@@ -3,15 +3,17 @@
 {% block content %}
 
 
-    <section id="logSection">
+    <section id="login_section">
         <form action='{% url "login.views.connect" %}' method='post'>
             {% csrf_token %}
             {{ form.as_p }}
             <input type='submit' value='Log In' />
         </form>
+
+    </section>
+
     {% if error %}
     <h5 class ="login_error">{{ message }}</h5>
     {% endif %}
-    </section>
 
 {%  endblock %}
