@@ -1,9 +1,6 @@
-{% extends "base.html" %}
+{% extends "base/base_home.html" %}
+{% load static %}
 {% block title %}
-    Welcome {{ request.user.username }}
+    Welcome, {{ request.user.username|capfirst }} !
 {% endblock %}
-{% block content %}
 
-
-
-{% endblock %}
