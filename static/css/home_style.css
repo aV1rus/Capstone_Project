@@ -1,0 +1,51 @@
+html
+{
+
+        background-image: -webkit-radial-gradient(45% 30%,ellipse, #FFF8DC 0%,rgba(0,0,0,.6) 150%);
+        background-image: -moz-radial-gradient(40% 30%,ellipse, #FFF8DC 0%,rgba(0,0,0,.6) 150%);
+        background-repeat:repeat-y;
+        background-size: 100% 1000px;
+
+}
+.user_bar
+{
+    border-bottom: inset 3px #551a8b;
+    width:95%;
+    margin:auto;
+    height: 70px;
+}
+.welcome_link,.logout_link
+{
+    position:relative;
+    top:30px;
+    font-size: 22pt;
+    color: #834C24;
+    text-shadow: 0 1px 1px black;
+}
+.logout_button
+{
+    border:inset 3px #551a8b;
+    display:inline-block;
+    text-align: center;
+    width:30px;
+    height:30px;
+    border-radius: 100px;
+    font-size: 22pt;
+    color:#834C24;
+    text-decoration: none;
+    transition-delay:.2s;
+    transition-duration:.5s;
+}
+.logout_link
+{
+    left:74%;
+    transition-delay:.2s;
+    transition-duration:.5s;
+
+}
+.logout_button:hover, .logout_link:hover
+{
+    color:firebrick;
+    border-color:firebrick;
+    text-shadow: 0 -1px 20px firebrick;
+}

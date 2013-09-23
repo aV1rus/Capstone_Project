@@ -10,8 +10,11 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'capstone.views.home', name='home'),
     # url(r'^capstone/', include('capstone.foo.urls')),
-    url(r'^$', 'login.views.login'),
-url('^login/', include('login.urls'))
+    url(r'^$', 'login.views.register'),
+    url(r'^login/', include('login.urls')),
+    url(r'^home/', include('home.urls')),
+    url(r'^logout/', "login.views.disconnect"),
+    url(r'^register/', "login.views.register"),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

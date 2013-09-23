@@ -1,16 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
-class User(models.Model):
-    firstName = models.CharField(max_length=30)
-    lastName = models.CharField(max_length=30)
-    userName = models.CharField(max_length=30)
-    registration_date = models.DateTimeField(auto_now_add=True, verbose_name="Registration Date")
-    last_visit = models.DateTimeField(auto_now_add=True, verbose_name="Last Visit")
-    email = models.EmailField(max_length=30)
-    password = models.CharField(max_length=30)
+class Profile(models.Model):
+    user = models.OneToOneField(User)
+    #picture = models.ImageField(null=True,blank = True, upload_to ="/pictures")
 
     def __unicode__(self):
-        return self.id
+        return "Profile for User {0} {1}. Last visit on {2}".format(self.user.first_name, self.user.last_name,self.user.last_login)
 
 

@@ -1,0 +1,18 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block style %}
+    <link rel = 'stylesheet' href = '{% static "css/home_style.css" %}'>
+{% endblock %}
+{% block content %}
+
+    {% block userbar %}
+          <header class = "user_bar">
+                <span class = "welcome_link">Welcome,{{ request.user.username|capfirst  }}!</span>
+                <span class = "logout_link">Log Out <a class = "logout_button" href = {% url "login.views.disconnect" %}>!</a>
+                    </span>
+          </header>
+        {% endblock %}
+
+
+{% endblock %}
