@@ -7,7 +7,6 @@ html
         background-size: 100% 1000px;
 
 }
-
 .user_bar
 {
     position:relative;
@@ -17,7 +16,7 @@ html
     height: 70px;
     /*background-color: #336699;*/
 }
-.welcome_link,.logout_link
+.welcome_link,.logout_link,.home_link
 {
     position:absolute;
     top:30px;
@@ -34,17 +33,25 @@ html
     height:30px;
     border-radius: 100px;
     font-size: 22pt;
-    color:#834C24;
+    color:white;
     text-decoration: none;
     transition-delay:.2s;
     transition-duration:.5s;
 }
-.logout_link
+.logout_link, .home_link
 {
     left:89%;
     transition-delay:.2s;
     transition-duration:.5s;
 
+}
+.home_link
+{
+    left:16%;
+}
+.home_link:hover
+{
+    text-shadow: 0 4px 4px red;
 }
 .logout_button:hover, .logout_link:hover
 {
