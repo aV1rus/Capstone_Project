@@ -1,6 +1,5 @@
 from django import forms
-from django.contrib.auth.models import User
-from login.models import Profile
+
 
 class ConnectionForm(forms.Form):
     username = forms.CharField(max_length=30,widget=forms.TextInput(attrs={'placeholder':'Username'}), label="")

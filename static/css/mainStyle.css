@@ -1,8 +1,8 @@
 html
 {
 
-        background-image: -webkit-radial-gradient(45% 30%,ellipse, #FFF8DC 0%,rgba(0,0,0,.6) 150%);
-        background-image: -moz-radial-gradient(40% 30%,ellipse, #FFF8DC 0%,rgba(0,0,0,.6) 150%);
+        background-image: -webkit-radial-gradient(45% 30%,ellipse, #336699 0%,rgba(0,0,0,.6) 150%);
+        background-image: -moz-radial-gradient(40% 30%,ellipse, #336699 0%,rgba(0,0,0,.6) 150%);
         background-repeat:repeat-y;
         background-size: 100% 1000px;
 }
@@ -15,19 +15,19 @@ html
     width:700px;
     height:300px;
     padding:20px;
-    color:#834C24;
+    color:white;
     text-shadow:0 1px .5px black;
     font-size: 48pt;
     display: inline-block;
 
 }
-.welcome a
+a
 {
     color:#551a8b;
     transition-delay:.1s;
     transition-duration:.5s;
 }
-.welcome a:hover
+a:hover
 {
     color:darkred;
 }
@@ -36,24 +36,21 @@ html
     width:500px;
     height:300px;
     margin:auto;
+    margin-top: 150px;
     border:inset 1px black;
     border-radius:10px;
-    position:absolute;
-    top:30%;
-    left:30%;
     color:white;
     text-shadow: 0 -2px 4px white;
     text-align:center ;
-    background-image: -webkit-radial-gradient(45% 30%,ellipse, #1F1209 0%,rgba(0,0,0,.6) 150%);
-    background-image: -moz-radial-gradient(40% 30%,ellipse, #1F1209 0%,rgba(0,0,0,.6) 150%);
+    background-image: -webkit-radial-gradient(45% 30%,ellipse, 	 #666 0%,rgba(0,0,0,.6) 150%);
+    background-image: -moz-radial-gradient(40% 30%,ellipse,  #666 0%,rgba(0,0,0,.6) 150%);
     background-repeat:no-repeat;
 }
 #registration_section
 {
     height: 550px;
-    top:10%;
-    left:60%;
-
+    margin-right:60px;
+    margin-top: 50px;
 }
 
 input
@@ -64,14 +61,14 @@ input
     height:40px;
     font-size:15pt;
     font-weight: bold;
-    color:#834C24;
+    color:darkblue;
     transition-delay:.1s;
     transition-duration:.5s;
     text-align: center;
 }
 input[type= 'submit']
 {
-    color:#551a8b;
+    color:#369;
     background-color:#CCC;
 }
 input:focus
