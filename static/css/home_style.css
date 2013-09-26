@@ -1,30 +1,33 @@
 html
 {
 
-        background-image: -webkit-radial-gradient(45% 30%,ellipse, #FFF8DC 0%,rgba(0,0,0,.6) 150%);
-        background-image: -moz-radial-gradient(40% 30%,ellipse, #FFF8DC 0%,rgba(0,0,0,.6) 150%);
+        background-image: -webkit-radial-gradient(45% 30%,ellipse, #336699 0%,rgba(0,0,0,.6) 150%);
+        background-image: -moz-radial-gradient(40% 30%,ellipse, #336699 0%,rgba(0,0,0,.6) 150%);
         background-repeat:repeat-y;
         background-size: 100% 1000px;
 
 }
+
 .user_bar
 {
-    border-bottom: inset 3px #551a8b;
-    width:95%;
+    position:relative;
+    border-bottom: inset 3px black;
+    width:100%;
     margin:auto;
     height: 70px;
+    /*background-color: #336699;*/
 }
 .welcome_link,.logout_link
 {
-    position:relative;
+    position:absolute;
     top:30px;
     font-size: 22pt;
-    color: #834C24;
+    color: #FFFFFF;
     text-shadow: 0 1px 1px black;
 }
 .logout_button
 {
-    border:inset 3px #551a8b;
+    border:outset 3px white;
     display:inline-block;
     text-align: center;
     width:30px;
@@ -38,7 +41,7 @@ html
 }
 .logout_link
 {
-    left:74%;
+    left:89%;
     transition-delay:.2s;
     transition-duration:.5s;
 
@@ -48,4 +51,8 @@ html
     color:firebrick;
     border-color:firebrick;
     text-shadow: 0 -1px 20px firebrick;
+}
+.settings_link
+{
+    color: #b0241c;
 }

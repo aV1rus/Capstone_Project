@@ -1,4 +1,5 @@
 {%  extends "base/base.html" %}
+
 {% block title %}Login Page{% endblock %}
 {% block content %}
 
@@ -11,7 +12,7 @@
         </form>
 
     </section>
-
+    <div class = "login_error"><a href ='{% url "login.views.register" %}'> Register </a></div>
     {% if error %}
     <h5 class ="login_error">{{ message }}</h5>
     {% endif %}
