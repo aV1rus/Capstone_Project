@@ -2,10 +2,22 @@
 {% load static %}
 
 {% block style %}
-    <link rel = 'stylesheet' href = '{% static "css/home_style.css" %}'>
+    <link rel = 'stylesheet' href="{% static "css/home_style.css" %}" />
+    <link rel = 'stylesheet' href="{% static "css/sidebar.css" %}" />
 {% endblock %}
-{% block content %}
 
+{% block sidebar %}
+<div id="sidebar">
+	    <img src="images/logo.png" alt="logo" id="logo" />
+	    <ul>
+            <li><a href="#">Some</a></li>
+            <li><a href="#">Some</a></li>
+            <li><a href="#">Some</a></li>
+        </ul>
+</div>
+{%  endblock %}
+
+{% block content %}
     {% block userbar %}
           <header class = "user_bar">
                 <span class = "welcome_link">Welcome,{{ request.user.username|capfirst  }}!</span>
@@ -13,6 +25,5 @@
                     </span>
           </header>
         {% endblock %}
-
 
 {% endblock %}

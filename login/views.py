@@ -10,6 +10,7 @@ def disconnect(request):
     logout(request)
     return redirect(reverse("login.views.connect"))
 
+
 def connect(request):
     error = False
     message = ""
@@ -19,13 +20,13 @@ def connect(request):
             message = "valid"
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            user = authenticate(username=username,password=password)
+            user = authenticate(username=username, password=password)
             if user:
-                login(request,user)
+                login(request, user)
                 return redirect("home.views.home")
             else:
                 error = True
-                message = "Invalid credentials."
+                message = "Invalid credentials.<br/>"+username+password
 
         else:
             message = "Fields incomplete."
@@ -33,6 +34,7 @@ def connect(request):
     else:
         form = ConnectionForm()
     return render(request, "login/login.html", locals())
+
 
 def register(request):
     error = False
@@ -45,8 +47,8 @@ def register(request):
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
 
-            user = User.objects.filter(email = email)
-            user2 = User.objects.filter(username = username)
+            user = User.objects.filter(email=email)
+            user2 = User.objects.filter(username=username)
 
             if user:
                 message = "Email address already in use"
