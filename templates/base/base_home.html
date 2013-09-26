@@ -1,4 +1,5 @@
 {% extends "base/base.html" %}
+
 {% load static %}
 
 {% block style %}
@@ -7,15 +8,13 @@
 {% endblock %}
 
 {% block sidebar %}
-<div id="sidebar">
-	    <img src="images/logo.png" alt="logo" id="logo" />
-	    <ul>
-            <li><a href="#">Some</a></li>
-            <li><a href="#">Some</a></li>
-            <li><a href="#">Some</a></li>
-        </ul>
-</div>
+
+
+{% include "base/sidebar.html" %}
+
+
 {%  endblock %}
+
 
 {% block content %}
     {% block userbar %}
