@@ -26,7 +26,7 @@ def connect(request):
                 return redirect("home.views.home")
             else:
                 error = True
-                message = "Invalid credentials.<br/>"+username+password
+                message = "Invalid credentials"
 
         else:
             message = "Fields incomplete."
