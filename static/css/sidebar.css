@@ -8,9 +8,9 @@
     -moz-transition: width 1s ease-in-out;
     -o-transition: width 1s ease-in-out;
     transition: width 1s ease-in-out;
+    background-color: rgba(200, 200, 200, .3);
 
-    width: 20px;
-    background-color: rgba(200, 200, 200, .6);
+    width: 50px;
     border-radius: 5px;
     position: fixed;
     top: 90px;
@@ -25,6 +25,7 @@
     -moz-transition: width 1s ease-in-out;
     -o-transition: width 1s ease-in-out;
     transition: width 1s ease-in-out;
+    background-color: rgba(200, 200, 200, .8);
 
     width:150px;
 }

@@ -1,18 +1,17 @@
 html
 {
-
         background-image: -webkit-radial-gradient(45% 30%,ellipse, #336699 0%,rgba(0,0,0,.6) 150%);
         background-image: -moz-radial-gradient(40% 30%,ellipse, #336699 0%,rgba(0,0,0,.6) 150%);
         background-repeat:repeat-y;
         background-size: 100% 1000px;
-
 }
 
 #main_content
 {
     position: absolute;
-    left: 5%;
+    left: 10%;
     top: 15%;
+    width: 80%;
     background: #DFDFDF;
     padding: 1em;
     border-radius: 5px;
