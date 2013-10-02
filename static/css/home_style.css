@@ -7,6 +7,23 @@ html
         background-size: 100% 1000px;
 
 }
+
+#main_content
+{
+    position: absolute;
+    left: 5%;
+    top: 15%;
+    background: #DFDFDF;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 10px 10px 5px #888888;
+}
+#main_content li
+{
+    width: 100%;
+    padding: 0;
+    list-style: none;
+}
 .user_bar
 {
     position:relative;

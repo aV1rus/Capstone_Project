@@ -10,10 +10,11 @@
     transition: width 1s ease-in-out;
 
     width: 20px;
-    background-color: rgba(200, 200, 200, .2);
+    background-color: rgba(200, 200, 200, .6);
     border-radius: 5px;
     position: fixed;
     top: 90px;
+    z-index: 3000;
 }
 #sidebar:hover
 {
