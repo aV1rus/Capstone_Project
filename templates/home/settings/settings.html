@@ -3,6 +3,10 @@
 
 {% block user_content %}
 
+    <form action = "{% url "settings.views.settings" %}" method = "post">
+    {% csrf_token %}
     {{ form.as_ul }}
-
+    <input type = 'submit' value = 'Save Changes'/>
+    </form>
 {% endblock %}
+

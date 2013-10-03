@@ -63,3 +63,15 @@ html
 {
     color: #b0241c;
 }
+#user_content
+{
+    margin-top: 20px;
+    vertical-align: top;
+    display:inline-block;
+    margin-left:5px;
+    border:inset 2px #CCC;
+    width:85%;
+    height:500px;
+    padding:20px;
+    background-color: #EEE;
+}

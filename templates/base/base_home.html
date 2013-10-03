@@ -7,16 +7,13 @@
     <link rel = 'stylesheet' href="{% static "css/sidebar.css" %}" />
 {% endblock %}
 
-{% block sidebar %}
 
-
-{% include "base/sidebar.html" %}
-
-
-{%  endblock %}
 
 
 {% block content %}
+
+
+
     {% block userbar %}
           <header class = "user_bar">
                 <span class = "welcome_link">Welcome, <a href = '{% url "settings.views.settings" %}' class = "settings_link">{{ request.user.username|capfirst  }}</a>!</span>
@@ -26,9 +23,13 @@
                     </span>
           </header>
     {% endblock %}
+    {% block sidebar %}
+        {% include "base/sidebar.html" %}
+    {%  endblock %}
 
-    {% block user_content %}
+    <section id = "user_content">
+        {% block user_content %}
 
-    {% endblock %}
-
+        {% endblock %}
+    </section>
 {% endblock %}
