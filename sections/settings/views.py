@@ -1,7 +1,9 @@
 # Create your views here.
-from django.shortcuts import render, redirect
-from settings.forms import SettingsFom
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+
+from sections.settings.forms import SettingsFom
+
 
 @login_required(login_url="login.views.connect")
 def settings(request):
