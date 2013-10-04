@@ -16,7 +16,7 @@
 
     {% block userbar %}
           <header class = "user_bar">
-                <span class = "welcome_link">Welcome, <a href = '{% url "settings.views.settings" %}' class = "settings_link">{{ request.user.username|capfirst  }}</a>!</span>
+                <span class = "welcome_link">Welcome, <a href = '{% url "sections.settings.views.settings" %}' class = "settings_link">{{ request.user.username|capfirst  }}</a>!</span>
                 <a href = "{% url "home.views.home" %}" class = "home_link" ><img src="{% static "images/home_icon.png" %}" alt="home" /></a>
 
               <span class = "logout_link">Log Out <a class = "logout_button" href = {% url "login.views.disconnect" %}>!</a>

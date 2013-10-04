@@ -1,5 +1,5 @@
 from django.conf.urls import url, patterns
 
-urlpatterns = patterns('messaging.views',
+urlpatterns = patterns('sections.messaging.views',
    url(r'^$', 'messaging'),
 )
