@@ -4,8 +4,15 @@ html
         background-image: -moz-radial-gradient(40% 30%,ellipse, #FFF 0%,rgba(0,0,0,.6) 150%);
         background-repeat:repeat-y;
         background-size: 100% 1000px;
+    height:100%;
 }
 
+body
+{
+    height: 90%;
+}
+
+/* TODO :::::: Are we actually using any #main_content??? This might be old and can be removed */
 #main_content
 {
     position: absolute;
@@ -87,7 +94,13 @@ html
     margin-left:5px;
     border:inset 2px rgba(0,0,0,0);
     width:85%;
-    height:500px;
+    height:85%;
     padding:20px;
     background-color: #EEE;
+}
+#footer
+{
+    vertical-align: bottom;
+    margin-top: 15px;
+    margin-left: 30px;
 }
