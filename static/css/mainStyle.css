@@ -1,8 +1,8 @@
 html
 {
 
-        background-image: -webkit-radial-gradient(45% 30%,ellipse, #336699 0%,rgba(0,0,0,.6) 150%);
-        background-image: -moz-radial-gradient(40% 30%,ellipse, #336699 0%,rgba(0,0,0,.6) 150%);
+        background-image: -webkit-radial-gradient(45% 30%,ellipse, #FFF 0%,rgba(0,0,0,.6) 150%);
+        background-image: -moz-radial-gradient(40% 30%,ellipse, #FFF 0%,rgba(0,0,0,.6) 150%);
         background-repeat:repeat-y;
         background-size: 100% 1000px;
 }
@@ -15,7 +15,7 @@ html
     width:700px;
     height:300px;
     padding:20px;
-    color:white;
+    color:#008;
     text-shadow:0 1px .5px black;
     font-size: 48pt;
     display: inline-block;
@@ -23,13 +23,13 @@ html
 }
 a
 {
-    color:#551a8b;
+    color:darkred;
     transition-delay:.1s;
     transition-duration:.5s;
 }
 a:hover
 {
-    color:darkred;
+    color:red;
 }
 #login_section,#registration_section
 {
@@ -42,8 +42,8 @@ a:hover
     color:white;
     text-shadow: 0 -2px 4px white;
     text-align:center ;
-    background-image: -webkit-radial-gradient(45% 30%,ellipse, 	 #666 0%,rgba(0,0,0,.6) 150%);
-    background-image: -moz-radial-gradient(40% 30%,ellipse,  #666 0%,rgba(0,0,0,.6) 150%);
+    background-image: -webkit-radial-gradient(45% 30%,ellipse, 	 #222 0%,rgba(0,0,0,.6) 150%);
+    background-image: -moz-radial-gradient(40% 30%,ellipse,  #222 0%,rgba(0,0,0,.6) 150%);
     background-repeat:no-repeat;
 }
 #registration_section
@@ -68,7 +68,7 @@ input
 }
 input[type= 'submit']
 {
-    color:#369;
+    color:#008;
     background-color:#CCC;
 }
 input:focus
