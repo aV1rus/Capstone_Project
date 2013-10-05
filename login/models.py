@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User)
+    #major = models.CharField(max_length=30)
+
     #profile_picture = models.FileField(null=True,blank = True, upload_to ="/pictures")
 
     def __unicode__(self):

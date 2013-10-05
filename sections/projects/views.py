@@ -3,4 +3,4 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url="login.views.connect")
 def projects(request):
-    return render_to_response('home/projects/projects.html', {'first_name': request.user.first_name})
+    return render_to_response('home/projects/projects.html', locals())
