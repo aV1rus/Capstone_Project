@@ -46,7 +46,6 @@ def register(request):
             username = form.cleaned_data['username']
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
-
             user = User.objects.filter(email=email)
             user2 = User.objects.filter(username=username)
 

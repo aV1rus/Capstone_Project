@@ -1,5 +1,4 @@
 from capstone.dev_settings import *
-
 import os
 
 
@@ -136,6 +135,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'home',
     'login',
+    'sections.forum',
+    'sections.projects',
 )
 
 # A sample logging configuration. The only tangible logging

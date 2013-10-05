@@ -2,25 +2,31 @@
 
 {% block user_content %}
 
-<section id="proj_container">
+    <section id="proj_container">
 
-    <a href="add_new"> + Add New!!!</a>
+{#        <form><input type="button" onClick="parent.location='add_new'" value='Create New Project'></form>#}
+    <a class='large_main_btn' href='add_new'>Create New Project</a>
+        <br/>
+
+        <table id='proj_list'>
+            <tr class='header'>
+                <td> Name </td>
+                <td> Description </td>
+                <td> Date Created </td>
+            </tr>
+            {% for p in project_list %}
+                <tr class='option'>
+                    <td> {{ p.name }} </td>
+                    <td> {{ p.description }} </td>
+                    <td> {{ p.created_at }} </td>
+                </tr>
+            {%  endfor %}
+
+        </table>
 
 
-{#    <div id="proj_my_projects">#}
-{##}
-{#        <ul>#}
-{#            <li>#}
-{##}
-{#            </li>#}
-{#        </ul>#}
-{##}
-{#    </div>#}
 
-{#    <div id="proj_my_projects">#}
-{#        Contributions#}
-{#    </div>#}
 
-</section>
+    </section>
 
 {% endblock %}
