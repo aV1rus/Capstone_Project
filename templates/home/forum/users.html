@@ -10,9 +10,9 @@
 <ul>
 {% for user in users %}
      <li class='nolist'>
-     <input type="checkbox" value="" />{{ request.user.username }}
+        <input type="checkbox" value="" />{{ user.user.username }}
      </li>
-    {% endfor %}
+  {% endfor %}
 </ul>
 
 

@@ -90,4 +90,11 @@ input:focus
     text-shadow: 0 1px 1px black;
     color:#834C24;
 }
+label
+{
+    width: 150px;
+    float:left;
+    font-size: 1.5em;
+    margin-top: 35px;
 
+}
