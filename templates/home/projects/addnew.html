@@ -1,0 +1,25 @@
+{% extends "base/base_home.html" %}
+
+
+{% block user_content %}
+
+    <section id="proj_container">
+
+        <a href="/home/projects">< back</a>
+
+        <form action="" method="POST">
+            <table>
+            {% csrf_token %}
+            {{ form.as_table }}
+            <tr><th></th><td>
+            <input type="submit" value="Create">
+            </td></tr>
+            </table>
+        </form>
+
+        {% if error %}
+            {{ message }}
+        {% endif %}
+    </section>
+
+{% endblock %}
