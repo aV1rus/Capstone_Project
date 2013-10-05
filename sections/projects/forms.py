@@ -8,5 +8,5 @@ class CreateProjectForm(forms.Form):
 
 
 class UploadProjectForm(forms.Form):
-    description = forms.CharField(widget=forms.Textarea, required=True)
-    file = forms.FileField(required=True)
+    description = forms.CharField(widget=forms.Textarea)
+    file = forms.FileField(required=False)
