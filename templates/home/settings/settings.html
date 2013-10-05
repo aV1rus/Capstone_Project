@@ -1,11 +1,15 @@
 {% extends "base/base_home.html" %}
-
+{% load static %}
+{% block style %}
+    {{ block.super }}
+    <link rel = "stylesheet" href = "{% static "css/mainStyle.css"%}"/>
+{% endblock %}
 
 {% block user_content %}
 
     <form action = "{% url "sections.settings.views.settings" %}" method = "post">
     {% csrf_token %}
-    {{ form.as_ul }}
+    {{ form.as_p }}
     <input type = 'submit' value = 'Save Changes'/>
     </form>
 {% endblock %}
