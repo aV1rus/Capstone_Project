@@ -1,6 +1,21 @@
-.nolist
+#user_list
 {
-     width: 100%;
-    padding: 0;
-    list-style: none;
+    margin-left: 20px;
+
+}
+#user_list .header
+{
+    background-color: rgba(100,100,250,.7);
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#user_list .option:hover
+{
+    background-color: rgba(200,200,200,.7);
+}
+#user_list td
+{
+    padding: 1em;
+    border: #222222 solid 1px;
 }

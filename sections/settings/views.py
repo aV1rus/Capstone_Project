@@ -12,7 +12,6 @@ def settings(request):
         if form.is_valid:
             form.save()
     else:
-            form = SettingsFom(initial={'first_name' :request.user.first_name,'last_name' :request.user.last_name,
-            'email': request.user.email})
+            form = SettingsFom(initial={'first_name': request.user.first_name, 'last_name': request.user.last_name,'email': request.user.email})
 
     return render(request, "home/settings/settings.html", locals())

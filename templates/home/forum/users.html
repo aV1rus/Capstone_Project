@@ -4,16 +4,50 @@
 {% block user_content %}
 
     <a href='/home/forum'>< Back</a>
-    <br />
-    List of Users<br/>
 
-<ul>
-{% for user in users %}
-     <li class='nolist'>
-     <input type="checkbox" value="" />{{ request.user.username }}
-     </li>
-    {% endfor %}
-</ul>
+    <form name="search" class="form-search" method="get" action="#">
+        <input name="searchFilter" type="text" class="search-query input-large" {#onkeypress="return submitenter(this,event)" #} value='{{ searchFilter }}'>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <br />
+
+    <table id='user_list'>
+        <tr class='header'><td>
+            Id
+        </td><td>
+            Username
+        </td><td>
+            Email
+        </td><td>
+            Member Since
+        </td><td>
+            Projects Created
+        </td><td>
+            Contributions
+        </td></tr>
+        {% for u in users %}
+{#            {% if u.isActive %}#}
+
+            <tr class='option'><td>
+                {{ u.id }}
+            </td><td>
+                {{ u.username }}
+            </td><td>
+                {{ u.email }}
+            </td><td>
+                {{ u.date_joined }}
+            </td><td>
+                0
+            </td><td>
+                0
+            </td></tr>
+
+{#            {% endif %}#}
+        {% endfor %}
+    </table>
 
 
 {% endblock %}
+
+
