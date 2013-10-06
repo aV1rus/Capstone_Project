@@ -23,8 +23,14 @@ def addNew(request):
             title = form.cleaned_data['title']
             description = form.cleaned_data['description']
             project = Projects(user=request.user, name=title, description=description)
-            project.save()
-            message = 'valid'
+            if project:
+                #TODO :: HANDLE UPLOAD OF FILE
+                project.save()
+                project_id = project.id
+                update = ProjectUpdates(project_ref=project, user=request.user, description='Initial Upload', file_location='TEST')
+                update.save()
+                return redirect("/home/projects/project_info?projId="+str(project_id))
+
             # if project:
             #     uploadFile(request.FILES['file'], 'Initial Upload')
             #     message = 'Completed'
@@ -68,9 +74,10 @@ def commit(request):
             project = Projects.objects.get(id=project_id)
             description = form.cleaned_data['description']
             update = ProjectUpdates(project_ref=project, user=request.user, description=description, file_location='TEST')
-            update.save()
-            error = True
-            message = 'yay'
+            if update:
+                #TODO :: HANDLE UPLOAD OF FILE
+                update.save()
+                return redirect("/home/projects/project_info?projId="+project_id)
             # if project:
             #     uploadFile(request.FILES['file'], 'Initial Upload')
             #     message = 'Completed'
