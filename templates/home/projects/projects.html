@@ -8,7 +8,7 @@
     <a class='large_main_btn' href='add_new'>Create New Project</a>
         <br/>
 
-        <table id='proj_list'>
+        <table class='padd_table'>
             <tr class='header'>
                 <td> Name </td>
                 <td> Description </td>
@@ -16,7 +16,7 @@
             </tr>
             {% for p in project_list %}
                 <tr class='option'>
-                    <td> {{ p.name }} </td>
+                    <td> <a href="project_info?projId={{ p.id }}">{{ p.name }}</a> </td>
                     <td> {{ p.description }} </td>
                     <td> {{ p.created_at }} </td>
                 </tr>

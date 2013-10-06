@@ -137,6 +137,9 @@ INSTALLED_APPS = (
     'login',
     'sections.forum',
     'sections.projects',
+    'sections.newsfeed',
+    'sections.messaging',
+    'sections.settings'
 )
 
 # A sample logging configuration. The only tangible logging

@@ -3,33 +3,29 @@
     width: 100%;
 }
 
-
-
 .large_main_btn
 {
+
 }
 
-
-
-
-
-#user_list, #proj_list
+.padd_table
 {
     margin-left: 20px;
 
 }
-#user_list .header, #proj_list .header
+.padd_table .header
 {
     background-color: rgba(100,100,250,.7);
     text-decoration: underline;
     font-weight: bold;
 }
 
-#user_list .option:hover, #proj_list .option:hover
+.padd_table .option:hover
 {
     background-color: rgba(200,200,200,.7);
 }
-#user_list td, #proj_list td
+
+.padd_table td
 {
     padding: 1em;
     border: #222222 solid 1px;

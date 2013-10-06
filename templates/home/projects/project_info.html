@@ -1,0 +1,28 @@
+{% extends "base/base_home.html" %}
+
+{% block user_content %}
+
+    <section id="proj_container">
+
+        <a href="/home/projects/commit?projId={{ project.id }}">New Commit</a>
+        {{ project.name }}
+
+
+        <table class='padd_table'>
+            <tr class='header'>
+                <td>Date</td>
+                <td>Description</td>
+                <td>Download Link</td>
+            </tr>
+            {% for p in project_updates %}
+                <tr class='row'>
+                    <td>{{ p.created_at }}</td>
+                    <td>{{ p.description }}</td>
+                    <td><a href='#'>Link</a></td>
+                </tr>
+            {%  endfor %}
+        </table>
+
+    </section>
+
+{% endblock %}
