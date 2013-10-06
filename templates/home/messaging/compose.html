@@ -1,0 +1,16 @@
+{% extends "base/base_home.html" %}
+
+
+{% block user_content %}
+
+    <form action = "{% url "sections.messaging.views.compose" %}" method = 'POST'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type = 'submit' value = 'send'/>
+    </form>
+
+    {% if notify %}
+    <h1> {{ message }} ! </h1>
+    {% endif %}
+
+{% endblock %}
