@@ -4,5 +4,13 @@
 {% block user_content %}
 
     <a href='find/users'>Find Users</a>
+    <br/><br/>
+
+    {% for c in category_list %}
+        <a href='threads'>
+            {{ c.name }}   {{ c.acr }}
+        </a><br/>
+    {% endfor %}
+
 
 {% endblock %}

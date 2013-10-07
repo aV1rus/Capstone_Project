@@ -1,10 +1,14 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from home.models import Major
+from models import *
+
 
 @login_required(login_url="login.views.connect")
 def forum(request):
-    return render_to_response('home/forum/forum.html', locals())
+    category_list = Major.objects.all()
+    return render(request, 'home/forum/forum.html', locals())
 
 
 @login_required(login_url="login.views.connect")
@@ -19,4 +23,19 @@ def findUsers(request):
     else:
         users = User.objects.all()
 
-    return render_to_response('home/forum/users.html', locals())
+    return render(request, 'home/forum/users.html', locals())
+
+
+@login_required(login_url="login.views.connect")
+def threads(request):
+    if request.method == 'GET':
+        if request.GET:
+            category_id = request.GET['category_id']
+            category = Major.objects.get(id=category_id)
+            thread_list = Thread.objects.filter(category=category)
+
+    return render(request, 'home/forum/threads.html', locals())
+
+@login_required(login_url="login.views.connect")
+def thread_new(request):
+    return render(request, 'home/forum/threads_new.html', locals())

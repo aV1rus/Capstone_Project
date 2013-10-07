@@ -1,0 +1,11 @@
+#- model: home.major
+#  pk: 1
+#  fields:
+#    name: Software Engineering
+#    acr: SWE
+#- model: home.major
+#  pk: 2
+#  fields:
+#    name: Computer Science
+#    acr: CS
+#

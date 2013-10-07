@@ -2,15 +2,13 @@ from django.shortcuts import render_to_response
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from .forms import CreateProjectForm
-from sections.projects.models import Projects
-from django.utils import timezone
-from django.contrib.auth.models import User
+from sections.projects.models import *
 from .forms import UploadProjectForm
 
 @login_required(login_url="login.views.connect")
 def projects(request):
     project_list = Projects.objects.all()
-    return render_to_response('home/projects/projects.html', locals())
+    return render(request, 'home/projects/projects.html', locals())
 
 
 @login_required(login_url="login.views.connect")
@@ -56,7 +54,7 @@ def projectInfo(request):
             project_updates = ProjectUpdates.objects.filter(project_ref=project_id)
         else:
             project_list = Projects.objects.all()
-    return render_to_response('home/projects/project_info.html', locals())
+    return render(request, 'home/projects/project_info.html', locals())
 
 
 @login_required(login_url="login.views.connect")
@@ -77,6 +75,7 @@ def commit(request):
             if update:
                 #TODO :: HANDLE UPLOAD OF FILE
                 update.save()
+                handle_uploaded_file(request.FILES['file'])
                 return redirect("/home/projects/project_info?projId="+project_id)
             # if project:
             #     uploadFile(request.FILES['file'], 'Initial Upload')
@@ -94,16 +93,7 @@ def commit(request):
     return render(request, 'home/projects/commit.html', locals())
 
 
-    # def upload_file(request):
-    #     if request.method == 'POST':
-    #         form = UploadProjectForm(request.POST, request.FILES)
-    #         # if form.is_valid():
-    #         #     handle_uploaded_file(request.FILES['file'])
-    #         #     return HttpResponseRedirect('/success/url/')
-    #     else:
-    #         form = UploadProjectForm()
-    #     return render_to_response('upload.html', {'form': form})
-
-
-    # def uploadFile(file, description):
-    #     return
+def handle_uploaded_file(f):
+    with open('some/file/name.txt', 'wb+') as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)

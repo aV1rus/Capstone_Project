@@ -10,6 +10,7 @@ def validate_file_extension(value):
     if not value.name.endswith('.png'):
         raise ValidationError('Invalid file Format.')
 
+
 class Profile(models.Model):
     picture = models.FileField(null=True, blank=True, upload_to="profile_pictures/", validators=[validate_file_extension])
     user = models.OneToOneField(User)

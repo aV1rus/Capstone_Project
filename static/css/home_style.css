@@ -97,6 +97,7 @@ body
     height:85%;
     padding:20px;
     background-color: #EEE;
+    overflow-y: scroll;
 }
 #footer
 {
