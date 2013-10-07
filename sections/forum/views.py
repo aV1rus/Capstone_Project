@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from home.models import Major
-from models import *
+from .models import *
 
 
 @login_required(login_url="login.views.connect")
