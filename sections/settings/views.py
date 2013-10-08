@@ -10,7 +10,7 @@ from sections.settings.forms import SettingsForm
 
 @login_required(login_url="login.views.connect")
 def settings(request):
-    #Retrieve associated user profile
+    #Retrieve associated user user_profile
     profile = Profile.objects.get(user = request.user)
     notify = False
     message = ""
@@ -24,7 +24,7 @@ def settings(request):
             m_user.save()
             profile.major = form.cleaned_data['major']
             profile.headline = form.cleaned_data['headline']
-            #profile.picture = form.cleaned_data['picture']
+            #user_profile.picture = form.cleaned_data['picture']
             #handle_uploaded_file(request.FILES['file'])
             profile.save();
             notify = True

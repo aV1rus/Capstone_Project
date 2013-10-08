@@ -4,8 +4,13 @@
 {% block user_content %}
 
     <a href='/home/forum'>< Back</a>
-    <a href='threads/new'>New Thread</a>
+    <a href='threads/new?catId={{ category_id }}'>New Thread</a>
 
+    <br/><br/>
+
+    {% for t in thread_list %}
+        <a href='threads/view?threadId={{ t.id }}'>{{ t.title }} === {{ t.created_at }}</a><br/>
+    {% endfor %}
 
 
 {% endblock %}

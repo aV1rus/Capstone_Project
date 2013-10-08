@@ -7,4 +7,5 @@ urlpatterns = patterns('home.views',
    url(r'^newsfeed/', include('sections.newsfeed.urls')),
    url(r'^forum/', include('sections.forum.urls')),
    url(r'^projects/', include('sections.projects.urls')),
+   url(r'^user_profile/', include('sections.user_profile.urls')),
 )

@@ -5,4 +5,5 @@ urlpatterns = patterns('sections.forum.views',
    url(r'^find/users$', 'findUsers'),
    url(r'^threads$', 'threads'),
    url(r'^threads/new$', 'thread_new'),
+   url(r'^threads/view', 'thread_view'),
 )

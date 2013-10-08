@@ -139,7 +139,8 @@ INSTALLED_APPS = (
     'sections.projects',
     'sections.newsfeed',
     'sections.messaging',
-    'sections.settings'
+    'sections.settings',
+    'sections.user_profile'
 )
 
 # A sample logging configuration. The only tangible logging

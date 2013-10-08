@@ -5,6 +5,19 @@
 
     <a href='/home/forum'>< Back</a>
 
+    <form action="" method="POST">
+        <table>
+            {% csrf_token %}
+            {{ form.as_table }}
+            <tr><th></th><td>
+                <input type="hidden" value="{{ category_id }}" name="catId">
+                <input type="submit" value="Create">
+            </td></tr>
+        </table>
+    </form>
 
+    {% if error %}
+        {{ message }}
+    {% endif %}
 
 {% endblock %}
