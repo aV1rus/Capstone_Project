@@ -7,6 +7,7 @@ from sections.messaging.models import PrivateMessage
 @login_required(login_url="login.views.connect")
 def messaging(request):
     messages = PrivateMessage.objects.filter(receiver = request.user).order_by('-date_sent')
+    request.session['messages'] = PrivateMessage.objects.filter(receiver= request.user, viewed = False).count()
     return render_to_response('home/messaging/messaging.html', locals())
 
 @login_required(login_url="login.views.connect")

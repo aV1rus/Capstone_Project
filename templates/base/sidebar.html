@@ -16,7 +16,13 @@
 
             <li><a class='sidebar_item'href="/home/messaging">
                 <img class='sidebar_item_img' src="{% static "images/sidebar/messages2.png" %}" />
-            </a></li>
+
+            </a>
+                {% if request.session.messages > 0 %}
+                <span class = "new_messages_count">{{ request.session.messages }}
+                </span>
+                {% endif %}
+            </li>
 
             <li><a class='sidebar_item'href="/home/settings">
                 <img class='sidebar_item_img' src="{% static "images/sidebar/settings_icon.png" %}" />
