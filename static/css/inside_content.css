@@ -1,12 +1,15 @@
-#proj_container
+#right_main
 {
-    width: 100%;
+    height: 60%;
+    width: 180px;
+    right: 1%;
+    padding: 1em;
+    display:inline-block;
+    border: black solid 1px;
+    position: fixed;
+    right: 5%;
 }
 
-.large_main_btn
-{
-
-}
 
 .padd_table
 {
@@ -27,12 +30,16 @@
 
 .padd_table td
 {
-    padding: 1em;
+    padding: .5em 1em;
     border: #222222 solid 1px;
     border-radius: 3px;
 }
 
-
+/* PROJECT CSS*/
+#proj_container
+{
+    width: 100%;
+}
 
 /* PROFILE CSS */
 #profile_main_pic

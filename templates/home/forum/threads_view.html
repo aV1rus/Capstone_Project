@@ -2,10 +2,10 @@
 
 
 {% block user_content %}
-
-    <a href='/home/forum'>< Forum Home</a>
-    <br/><br/>
-   {{ thread.title }}  --- {{ thread.created_at }} -- {{ thread.user.username }}
+    <div id='right_main'>
+        <a href='/home/forum'>< Forum Home</a>
+    </div>
+    {{ thread.title }}  --- {{ thread.created_at }} -- {{ thread.user.username }}
     <br/>
     {{ thread.body }}
 

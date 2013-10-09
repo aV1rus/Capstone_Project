@@ -10,7 +10,9 @@ import Constants
 
 @login_required(login_url="login.views.connect")
 def forum(request):
+    # select m.name as name, m.acr as acr, COUNT(ft.id) as count, (select created_at from forum_comments where thread_ref_id=ft.id ORDER BY created_at DESC LIMIT 1 ) as last_post from home_major m JOIN forum_thread ft ON ft.category_id=m.id ORDER BY COUNT Desc;
     category_list = Major.objects.all()
+    # category_list = Major.objects.raw("select m.name as name, m.acr as acr, COUNT(ft.id) as count, (select created_at from forum_comments where thread_ref_id=ft.id ORDER BY created_at DESC LIMIT 1 ) as last_post from home_major m JOIN forum_thread ft ON ft.category_id=m.id ORDER BY COUNT Desc")
     return render(request, 'home/forum/forum.html', locals())
 
 

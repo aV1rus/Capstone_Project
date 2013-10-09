@@ -3,7 +3,9 @@
 
 {% block user_content %}
 
-    <a href='/home/forum'>< Back</a>
+    <div id='right_main'>
+        <a href='/home/forum'>< Back</a>
+    </div>
 
     <form name="search" class="form-search" method="get" action="#">
         <input name="searchFilter" type="text" class="search-query input-large" {#onkeypress="return submitenter(this,event)" #} value='{{ searchFilter }}'>
@@ -27,7 +29,7 @@
             Contributions
         </td></tr>
         {% for u in users %}
-{#            {% if u.isActive %}#}
+            {#            {% if u.isActive %}#}
 
             <tr class='option'><td>
                 {{ u.id }}
@@ -43,7 +45,7 @@
                 0
             </td></tr>
 
-{#            {% endif %}#}
+            {#            {% endif %}#}
         {% endfor %}
     </table>
 

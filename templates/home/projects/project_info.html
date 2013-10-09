@@ -3,9 +3,11 @@
 {% block user_content %}
 
     <section id="proj_container">
+        <div id='right_main'>
+            <a href="/home/projects">< Back</a><br/>
+            <a href="/home/projects/commit?projId={{ project.id }}">New Commit</a>
+        </div>
 
-        <a href="/home/projects">< Back</a>
-        <a href="/home/projects/commit?projId={{ project.id }}">New Commit</a>
         {{ project.name }}
 
 

@@ -3,22 +3,31 @@
 
 {% block user_content %}
 
-    <a href='find/users'>Find Users</a>
-    <br/><br/>
+    <div id='forum_main'>
 
-    <table class='padd_table'>
+        <div id='right_main'>
+
+            <a href='find/users'>Find Users</a>
+        </div>
+
+        <table class='padd_table'>
             <tr class='header'>
                 <td> Name </td>
                 <td> Acronym </td>
+                <td> Posts </td>
+                <td> Last Post </td>
             </tr>
-    {% for c in category_list %}
-        <tr class='option'>
+            {% for c in category_list %}
+                <tr class='option'>
                     <td> <a href='threads?catId={{ c.id }}'>{{ c.name }}</a> </td>
                     <td> {{ c.acr }} </td>
                 </tr>
-    {% endfor %}
+            {% endfor %}
 
         </table>
+
+    </div>
+
 
 
 
