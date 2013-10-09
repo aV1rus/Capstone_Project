@@ -31,3 +31,12 @@
     border: #222222 solid 1px;
     border-radius: 3px;
 }
+
+
+
+/* PROFILE CSS */
+#profile_main_pic
+{
+    height: 200px;
+    width: 200px;
+}

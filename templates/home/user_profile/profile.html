@@ -1,8 +1,11 @@
 {% extends "base/base_home.html" %}
-
+{%  load static %}
 
 {% block user_content %}
 
-    Profile
+    <img id='profile_main_pic' src="{% static "images/sections/profile/default_profile_pic.jpg" %}" />
+    {{ user.username }}<br/>
+    {{ user.first_name }}
+    {{ user.last_name }}
 
 {% endblock %}
