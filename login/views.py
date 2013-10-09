@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from login.forms import ConnectionForm, RegistrationForm
-from login.models import Profile
+from sections.user_profile.models import Profile
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
@@ -14,7 +14,7 @@ def disconnect(request):
 def connect(request):
     error = False
     message = ""
-    if request.method == "POST" :
+    if request.method == "POST":
         form = ConnectionForm(request.POST)
         if form.is_valid():
             message = "valid"

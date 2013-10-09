@@ -17,7 +17,7 @@ def compose(request):
         if form.is_valid():
             receiver = form.cleaned_data['receiver']
             content = form.cleaned_data['content']
-            PrivateMessage(sender= request.user,receiver=receiver, content=content).save()
+            PrivateMessage(sender=request.user, receiver=receiver, content=content).save()
             notify = True
             message = "message sent !"
         else:
@@ -26,7 +26,7 @@ def compose(request):
     else:
         form = Compose()
 
-    return render_to_response('home/messaging/compose.html', locals(),context_instance=RequestContext(request))
+    return render_to_response('home/messaging/compose.html', locals(), context_instance=RequestContext(request))
 # class MessagingTemp(TemplateView):
 #     template_name = 'hello_class.html'
 #
