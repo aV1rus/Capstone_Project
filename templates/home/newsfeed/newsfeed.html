@@ -3,8 +3,19 @@
 
 {% block user_content %}
 <h1>News Feed</h1>
-    {% for n in newsfeed_list %}
-        <a href='{{ n.url }}'>{{ n.title }}</a><br/>
+
+     <table class='padd_table'>
+            <tr class='header'>
+                <td> Date </td>
+                <td> Title </td>
+            </tr>
+     {% for n in newsfeed_list %}
+         <tr class='option'>
+                    <td> {{ n.created_at }}</td>
+                    <td> <a href='{{ n.url }}'>{{ n.title }}</a> </td>
+                </tr>
     {% endfor %}
+
+        </table>
 
 {% endblock %}

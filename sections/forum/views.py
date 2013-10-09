@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from home.models import Major
+from sections.newsfeed.models import NewsFeed
 from .models import *
 from forms import *
+import Constants
 
 
 @login_required(login_url="login.views.connect")
@@ -55,9 +57,10 @@ def thread_new(request):
             thread = Thread(user=request.user, category=category)
             if thread:
                 thread.save()
-                comment = Comments(user=request.user, title=title, body=body, thread_ref=thread)
-                comment.save()
-                return redirect("/home/forum/threads/view?threadId="+str(thread.id))
+                Comments(user=request.user, title=title, body=body, thread_ref=thread).save()
+                PROJECT_URL = "/home/forum/threads/view?threadId="+str(thread.id)
+                NewsFeed(user=request.user, title=Constants.NEWSFEED_FORUM_THREAD_NEW.format(request.user, category.name, title), url=PROJECT_URL).save()
+                return redirect(PROJECT_URL)
 
         else:
             message = 'Fields incomplete.'
