@@ -1,9 +1,9 @@
-from django.shortcuts import render_to_response
-from django.shortcuts import render,redirect
+import Constants
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .forms import CreateProjectForm
+from .forms import CreateProjectForm, UploadProjectForm
 from sections.projects.models import *
-from .forms import UploadProjectForm
+from sections.newsfeed.models import NewsFeed
 
 @login_required(login_url="login.views.connect")
 def projects(request):
@@ -25,9 +25,11 @@ def addNew(request):
                 #TODO :: HANDLE UPLOAD OF FILE
                 project.save()
                 project_id = project.id
-                update = ProjectUpdates(project_ref=project, user=request.user, description='Initial Upload', file_location='TEST')
-                update.save()
-                return redirect("/home/projects/project_info?projId="+str(project_id))
+                ProjectUpdates(project_ref=project, user=request.user, description='Initial Upload', file_location='TEST').save()
+                #Add to newsfeed
+                Project_URL = "/home/projects/project_info?projId="+str(project_id)
+                NewsFeed(user=request.user, title=Constants.NEWSFEED_PROJECT_CREATE.format(request.user, title), url=Project_URL).save()
+                return redirect(Project_URL)
 
             # if project:
             #     uploadFile(request.FILES['file'], 'Initial Upload')
@@ -75,8 +77,10 @@ def commit(request):
             if update:
                 #TODO :: HANDLE UPLOAD OF FILE
                 update.save()
-                handle_uploaded_file(request.FILES['file'])
-                return redirect("/home/projects/project_info?projId="+project_id)
+                # handle_uploaded_file(request.FILES['file'])
+                PROJECT_URL = "/home/projects/project_info?projId="+project_id
+                NewsFeed(user=request.user, title=Constants.NEWSFEED_PROJECT_COMMIT.format(request.user, project.name), url=PROJECT_URL).save()
+                return redirect(PROJECT_URL)
             # if project:
             #     uploadFile(request.FILES['file'], 'Initial Upload')
             #     message = 'Completed'

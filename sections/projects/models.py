@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Projects(models.Model):
-    user = models.ForeignKey(User)                           #user that created project
+    user = models.ForeignKey(User)                              #user that created project
     name = models.CharField(max_length=40)                      #Project Name
     description = models.CharField(max_length=300)              #Project Description
     created_at = models.DateTimeField(auto_now_add=True)        #Created At

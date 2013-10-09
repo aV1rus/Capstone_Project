@@ -2,7 +2,9 @@
 
 
 {% block user_content %}
-
-    Newsfeed
+<h1>News Feed</h1>
+    {% for n in newsfeed_list %}
+        <a href='{{ n.url }}'>{{ n.title }}</a><br/>
+    {% endfor %}
 
 {% endblock %}
