@@ -1,8 +1,44 @@
 {% extends "base/base_home.html" %}
-
+{% load static %}
+{% block style %}
+    {{ block.super }}
+    <link rel="stylesheet" href = "{% static "css/messages.css" %}"/>
+{% endblock %}
 
 {% block user_content %}
 
     <a href = '{% url "sections.messaging.views.compose" %}'> New Message </a>
+
+    <table>
+        <thead>
+            <tr>
+                <th scope="col"> Action </th>
+                <th scope="col"> Subject </th>
+                <th scope="col"> From </th>
+                <th scope="col">Preview</th>
+                <th scope = "col">Received</th>
+
+            </tr>
+        </thead>
+        <tbody>
+    {% for msg in messages %}
+        <tr
+              {% if not msg.viewed %}
+               class = "unread"
+               {% endif %}
+        >
+            <td><a href="{% url "sections.messaging.views.view"  msg.id  %}">View</a>
+            <br/><a href="{% url "sections.messaging.views.compose"%}">Reply</a></td>
+            <td class = "subject"> {{ msg.subject }} </td>
+            <td> {{ msg.sender }} </td>
+            <td> {{ msg.content|truncatechars:80 }}</td>
+            <td> {{ msg.date_sent }}</td>
+
+        </tr>
+        {% empty %}
+            <h2> There are no messages ! </h2>
+    {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}

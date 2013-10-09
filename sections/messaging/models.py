@@ -8,6 +8,9 @@ class PrivateMessage(models.Model):
             receiver = models.ForeignKey(User, related_name='rec+')
             date_sent = models.DateTimeField(auto_now_add=True)
             content = models.TextField(null = False)
+            subject = models.CharField(max_length=30, null= False)
+            viewed = models.BooleanField(default=False)
+
 
             def __unicode__(self):
                 return " Message sent by {0} to {1} on {2}".format(self.sender, self.receiver, self.date_sent)

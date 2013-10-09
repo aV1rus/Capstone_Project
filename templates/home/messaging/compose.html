@@ -3,6 +3,7 @@
 
 {% block user_content %}
 
+    {{ receiver }}
     <form action = "{% url "sections.messaging.views.compose" %}" method = 'POST'>
     {% csrf_token %}
     {{ form.as_p }}

@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from home.models import Major
 from sections.newsfeed.models import NewsFeed
 from .models import *
-from forms import *
+from .forms import *
 import Constants
 
 
