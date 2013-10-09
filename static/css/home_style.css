@@ -39,7 +39,7 @@ body
     height: 70px;
     /*background-color: #336699;*/
 }
-.welcome_link,.logout_link,.home_link
+.welcome_link,.logout_link/*,.home_link*/
 {
     position:absolute;
     top:30px;
@@ -70,7 +70,7 @@ body
 }
 .home_link
 {
-    left:16%;
+
 }
 .home_link:hover
 {
