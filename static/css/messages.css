@@ -1,16 +1,13 @@
 td,table
 {
-    border:solid 1px black;
+    border-bottom:dotted 1px black;
     border-collapse: collapse;
     padding:10px;
-
-
 }
 table{
     background-color:white;
     margin-left:auto;
     margin-right: auto;
-    margin-top: 50px;
     width:900px;
 }
 thead
@@ -26,4 +23,7 @@ thead
 .unread
 {
     color:darkred;
+}
+th{
+    border-right: solid 1px white;
 }

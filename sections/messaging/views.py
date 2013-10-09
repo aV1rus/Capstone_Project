@@ -31,7 +31,7 @@ def compose(request):
 
     return render_to_response('home/messaging/compose.html', locals(), context_instance=RequestContext(request))
 
-
+@login_required(login_url="login.views.connect")
 def view(request, message_id):
     message = get_object_or_404(PrivateMessage, id = message_id)
     message.viewed =  True

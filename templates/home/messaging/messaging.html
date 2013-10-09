@@ -30,7 +30,7 @@
             <td><a href="{% url "sections.messaging.views.view"  msg.id  %}">View</a>
             <br/><a href="{% url "sections.messaging.views.compose"%}">Reply</a></td>
             <td class = "subject"> {{ msg.subject }} </td>
-            <td> {{ msg.sender }} </td>
+            <td><a href='/home/user_profile?userId={{ msg.sender.id }}'>{{ msg.sender.username }}</a></td>
             <td> {{ msg.content|truncatechars:80 }}</td>
             <td> {{ msg.date_sent }}</td>
 
