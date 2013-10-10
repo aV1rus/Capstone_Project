@@ -2,9 +2,9 @@
 
 {% block user_content %}
 
-    <section id="proj_container">
         <a href="/home/projects">< Back</a><br/>
 
+        {{ project.name }}
         <div id='right_main'>
             <ul id="nav-right">
                 <li><a href="/home/projects/commit?projId={{ project.id }}">New Commit</a></li>
@@ -13,9 +13,8 @@
                 <li><a href="#">Invite</a></li>
             </ul>
         </div>
-        {{ project.name }}
 
-
+    <section class='main_with_right_menu'>
         <table class='padd_table'>
             <tr class='header'>
                 <td>Date</td>

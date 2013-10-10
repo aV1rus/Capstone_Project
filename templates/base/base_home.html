@@ -7,6 +7,9 @@
     <link rel = 'stylesheet' href="{% static "css/sidebar.css" %}" />
     <link rel = 'stylesheet' href="{% static "css/inside_content.css" %}" />
 {% endblock %}
+{% block extra_head_content  %}
+{% endblock %}
+
 {% block title %}
     Welcome, {{ request.user.username|capfirst }}!
 {% endblock %}

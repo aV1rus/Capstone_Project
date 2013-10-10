@@ -11,7 +11,6 @@ class PrivateMessage(models.Model):
             subject = models.CharField(max_length=30, null= True,default= "No subject")
             viewed = models.BooleanField(default=False)
 
-
             def __unicode__(self):
                 return " Message sent by {0} to {1} on {2}".format(self.sender, self.receiver, self.date_sent)
 

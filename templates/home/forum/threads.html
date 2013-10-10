@@ -1,5 +1,9 @@
 {% extends "base/base_home.html" %}
+{% load static %}
 
+{% block extra_head_content %}
+    <link rel = 'stylesheet' href="{% static "css/sections/forum/threads.css" %}" />
+{% endblock %}
 
 {% block user_content %}
 
@@ -11,9 +15,9 @@
         </ul>
     </div>
 
+    <section class='main_with_right_menu'>
 
-
-    <table class='padd_table'>
+    <table class='full_width_table padd_table'>
         <tr class='header'>
             <td> Title </td>
             <td> Created By </td>
@@ -21,15 +25,13 @@
         </tr>
         {% for t in thread_list %}
             <tr class='option'>
-                <td> <a href='threads/view?threadId={{ t.id }}'>{{ t.title }}</a></a> </td>
-                <td> {{ t.user.username }} </td>
-                <td>{{ t.created_at }}</td>
+                <td class='forum_threads_title'> <a href='threads/view?threadId={{ t.id }}'>{{ t.title }}</a></a> </td>
+                <td class='forum_threads_user'> {{ t.user.username }} </td>
+                <td class='forum_threads_date'>{{ t.created_at }}</td>
             </tr>
         {% endfor %}
     </table>
 
-
-
-
+    </section>
 
 {% endblock %}

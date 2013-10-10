@@ -2,7 +2,7 @@
 /* RIGHT SIDE TOOL BOX */
 #right_main
 {
-    width: 250px;
+    width: 15%;
     right: 1%;
     padding: 1em;
     display:inline-block;
@@ -11,7 +11,12 @@
     position: fixed;
     right: 5%;
 }
-
+.main_with_right_menu
+{
+    padding-left: 20px;
+    width:78%;
+    /*border: black solid 1px;*/
+}
 /*------Vertical navigation menu bar from bestlodge.blogspot.com---------*/
 #nav-right
 {
@@ -70,8 +75,7 @@
 /* Padded Table */
 .padd_table
 {
-    margin-left: 20px;
-
+    width: 100%;
 }
 .padd_table .header
 {
@@ -92,29 +96,6 @@
     border-radius: 3px;
 }
 
-/* FORUM CSS */
-#forum_thread_main #id_body
-{
-    width: 700px;
-}
-.forum_user_pic{ width: 100px; }
-.forum_thread_list{ padding: .5em 1em; border: #222222 solid 1px; }
-.forum_thread_list td{ vertical-align: top; }
-.forum_thread_list_main{ width: 590px; }
-.forum_thread_list_user, .forum_thread_list_date{ text-align: center; width: 110px;}
-/*.forum_thread_list_main, .forum_thread_list_date{ padding-top: 20px; }*/
-#forum_thread_comment{
-    margin-left: 20px;
-    width: 915px;
-    border: black solid 1px;
-    padding-left: 30px;
-}
-
-/* PROJECT CSS*/
-#proj_container
-{
-    width: 100%;
-}
 
 /* PROFILE CSS */
 #profile_main_pic

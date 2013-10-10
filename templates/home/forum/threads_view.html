@@ -1,32 +1,45 @@
 {% extends "base/base_home.html" %}
 {%  load static %}
 
+
+{% block extra_head_content %}
+    <link rel = 'stylesheet' href="{% static "css/sections/forum/threads_view.css" %}" />
+{% endblock %}
+
+
 {% block user_content %}
-
-    <div id='forum_thread_main'>
-
-        <div id='right_main'>
-            <ul id="nav-right">
-                <li><a href='/home/forum' title='Return to Main Forum'>< Forum Home</a></li>
-            </ul>
-        </div>
+    <div id='right_main'>
+        <ul id="nav-right">
+            <li><a href='/home/forum' title='Return to Main Forum'>< Forum Home</a></li>
+        </ul>
+    </div>
 
 
-        <table class='padd_table'>
-            <tr class='header'>
-                <td> User </td>
-                <td> Title </td>
-                <td> Date </td>
-            </tr>
+    <section class='main_with_right_menu' id='forum_thread_main'>
 
+        <table>
             {% for c in comment_list %}
-                <tr class='forum_thread_list'>
-                    <td class='forum_thread_list_user'> <img class='forum_user_pic' src="{% static "images/sections/profile/default_profile_pic.jpg" %}" /><br/>{{ c.user.username }} </td>
-                    <td class='forum_thread_list_main'> <b>{{ c.title }}</b> <br/> {{ c.body }} </td>
-                    <td class='forum_thread_list_date'>{{ c.created_at }}</td>
+                <tr class='tc_head'>
+                        <td colspan="2" >
+                            <span class='tc_head_date'>{{ c.created_at }}</span>
+                            <span class='tc_head_count'>{{forloop.counter}}</span>
+                        </td>
                 </tr>
+                <tr class='tc_holder'>
+                    <td class='tc_holder_user_container'> <img class='forum_user_pic' src="{% static "images/sections/profile/default_profile_pic.jpg" %}" /><br/>{{ c.user.username }} </td>
+                    <td class='tc_holder_main'> <b>{{ c.title }}</b> <br/> {{ c.body }} </td>
+                </tr>
+                <tr class='tc_spacer'></tr>
             {% endfor %}
         </table>
+
+
+
+
+
+
+
+
 
         <form id='forum_thread_comment' action="" method="POST">
             <table>
@@ -39,5 +52,5 @@
             </table>
         </form>
 
-    </div>
+    </section>
 {% endblock %}

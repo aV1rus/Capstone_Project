@@ -7,7 +7,8 @@
     {%  block style %}
         <link rel = 'stylesheet' href="{% static "css/mainStyle.css" %}" />
     {% endblock %}
-
+    {% block extra_head_content  %}
+    {% endblock %}
     <title>
         {% block title %}
             Template Page

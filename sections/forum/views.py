@@ -11,7 +11,7 @@ import Constants
 @login_required(login_url="login.views.connect")
 def forum(request):
     # category_list = Major.objects.all()
-    category_list = Major.objects.raw("select *, (SELECT COALESCE(COUNT(*), 0) FROM forum_thread WHERE category_id=m.id) as count, (select created_at from forum_comments where thread_ref_id=(select id from forum_thread WHERE category_id=m.id ORDER BY created_at DESC) ORDER BY created_at DESC LIMIT 1 ) as last_post from home_major m ORDER BY last_post DESC, count Desc");
+    category_list = Major.objects.raw("SELECT *, (SELECT COALESCE(COUNT(*), 0) FROM forum_thread WHERE category_id=m.id) as count, (select created_at from forum_comments where thread_ref_id=(select id from forum_thread WHERE category_id=m.id ORDER BY created_at DESC) ORDER BY created_at DESC LIMIT 1 ) as last_post from home_major m ORDER BY last_post DESC, count Desc");
     return render(request, 'home/forum/forum.html', locals())
 
 
