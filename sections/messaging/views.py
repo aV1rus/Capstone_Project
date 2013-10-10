@@ -1,4 +1,4 @@
-from django.shortcuts import render,render_to_response
+from django.shortcuts import render,render_to_response,redirect
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import RequestContext,get_object_or_404
 from sections.messaging.forms import Compose
@@ -42,9 +42,15 @@ def compose(request):
 @login_required(login_url="login.views.connect")
 def view(request, message_id):
     message = get_object_or_404(PrivateMessage, id = message_id)
-    message.viewed =  True
+    message.viewed = True
     message.save()
     return render_to_response('home/messaging/view_message.html', locals(), context_instance=RequestContext(request))
+
+@login_required(login_url="login.views.connect")
+def delete(request, message_id):
+    message = get_object_or_404(PrivateMessage, id = message_id)
+    message.delete()
+    return redirect("sections.messaging.views.messaging")
 # class MessagingTemp(TemplateView):
 #     template_name = 'hello_class.html'
 #
