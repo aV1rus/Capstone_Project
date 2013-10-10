@@ -11,6 +11,12 @@ def messaging(request):
     return render_to_response('home/messaging/messaging.html', locals())
 
 @login_required(login_url="login.views.connect")
+def outbox(request):
+    messages = PrivateMessage.objects.filter(sender = request.user).order_by('-date_sent')
+    request.session['messages'] = PrivateMessage.objects.filter(receiver= request.user, viewed = False).count()
+    return render_to_response('home/messaging/outbox.html', locals())
+
+@login_required(login_url="login.views.connect")
 def compose(request):
     notify =False
     message = ""
@@ -20,6 +26,8 @@ def compose(request):
             receiver = form.cleaned_data['receiver']
             content = form.cleaned_data['content']
             subject = form.cleaned_data['subject']
+            if not subject:
+                subject = "No subject"
             PrivateMessage(sender=request.user, receiver=receiver, content=content, subject = subject).save()
             notify = True
             message = "message sent !"

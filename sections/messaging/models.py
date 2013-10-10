@@ -8,7 +8,7 @@ class PrivateMessage(models.Model):
             receiver = models.ForeignKey(User, related_name='rec+')
             date_sent = models.DateTimeField(auto_now_add=True)
             content = models.TextField(null = False)
-            subject = models.CharField(max_length=30, null= False)
+            subject = models.CharField(max_length=30, null= True,default= "No subject")
             viewed = models.BooleanField(default=False)
 
 

@@ -8,16 +8,15 @@
 {% block user_content %}
 
     <a href = '{% url "sections.messaging.views.compose" %}'> New Message </a>
-    <a href= '{% url 'sections.messaging.views.outbox' %}'> Outbox </a>
 
     <table>
         <thead>
             <tr>
                 <th scope="col"> Action </th>
                 <th scope="col"> Subject </th>
-                <th scope="col"> From </th>
+                <th scope="col"> To </th>
                 <th scope="col">Preview</th>
-                <th scope = "col">Received</th>
+                <th scope = "col">Date Sent</th>
 
             </tr>
         </thead>
@@ -31,9 +30,10 @@
             <td><a href="{% url "sections.messaging.views.view"  msg.id  %}">View</a>
             <br/><a href="{% url "sections.messaging.views.compose"%}">Reply</a><br/>
                 <a href="#"> Delete </a>
+
             </td>
             <td class = "subject"> {{ msg.subject }} </td>
-            <td><a href='/home/user_profile?userId={{ msg.sender.id }}'>{{ msg.sender.username }}</a></td>
+            <td><a href='/home/user_profile?userId={{ msg.receiver.id }}'>{{ msg.receiver.username }}</a></td>
             <td> {{ msg.content|truncatechars:80 }}</td>
             <td> {{ msg.date_sent }}</td>
 

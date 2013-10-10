@@ -2,13 +2,13 @@ td,table
 {
     border-bottom:dotted 1px black;
     border-collapse: collapse;
-    padding:10px;
+    padding:2px;
 }
 table{
     background-color:white;
     margin-left:auto;
     margin-right: auto;
-    width:900px;
+    width:100%;
 }
 thead
 {
