@@ -3,14 +3,33 @@
 
 {% block user_content %}
 
+    <a href='/home/forum'>< Back</a><br/>
+
     <div id='right_main'>
-        <a href='/home/forum'>< Back</a><br/>
-        <a href='threads/new?catId={{ category_id }}'>New Thread</a>
+        <ul id="nav-right">
+            <li><a href='threads/new?catId={{ category_id }}'>New Thread</a></li>
+        </ul>
     </div>
 
-    {% for t in thread_list %}
-        <a href='threads/view?threadId={{ t.id }}'>{{ t.title }} === {{ t.created_at }}</a><br/>
-    {% endfor %}
+
+
+    <table class='padd_table'>
+        <tr class='header'>
+            <td> Title </td>
+            <td> Created By </td>
+            <td> Date </td>
+        </tr>
+        {% for t in thread_list %}
+            <tr class='option'>
+                <td> <a href='threads/view?threadId={{ t.id }}'>{{ t.title }}</a></a> </td>
+                <td> {{ t.user.username }} </td>
+                <td>{{ t.created_at }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+
 
 
 {% endblock %}

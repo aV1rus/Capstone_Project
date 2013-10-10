@@ -1,21 +1,43 @@
 {% extends "base/base_home.html" %}
-
+{%  load static %}
 
 {% block user_content %}
-    <div id='right_main'>
-        <a href='/home/forum'>< Forum Home</a>
+
+    <div id='forum_thread_main'>
+
+        <div id='right_main'>
+            <ul id="nav-right">
+                <li><a href='/home/forum' title='Return to Main Forum'>< Forum Home</a></li>
+            </ul>
+        </div>
+
+
+        <table class='padd_table'>
+            <tr class='header'>
+                <td> User </td>
+                <td> Title </td>
+                <td> Date </td>
+            </tr>
+
+            {% for c in comment_list %}
+                <tr class='forum_thread_list'>
+                    <td class='forum_thread_list_user'> <img class='forum_user_pic' src="{% static "images/sections/profile/default_profile_pic.jpg" %}" /><br/>{{ c.user.username }} </td>
+                    <td class='forum_thread_list_main'> <b>{{ c.title }}</b> <br/> {{ c.body }} </td>
+                    <td class='forum_thread_list_date'>{{ c.created_at }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <form id='forum_thread_comment' action="" method="POST">
+            <table>
+                {% csrf_token %}
+                {{ form.as_table }}
+                <tr><th></th><td>
+                    <input type="hidden" value="{{ thread.id }}" name="catId">
+                    <input type="submit" value="Create">
+                </td></tr>
+            </table>
+        </form>
+
     </div>
-    {{ thread.title }}  --- {{ thread.created_at }} -- {{ thread.user.username }}
-    <br/>
-    {{ thread.body }}
-
-    {% for c in comment_list %}
-        {{ c.title }}
-        {{ c.user.username }}
-        {{ c.created_at }}
-        <br/>
-        {{ c.body }}
-        <br/><br/>
-    {% endfor %}
-
 {% endblock %}
