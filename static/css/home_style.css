@@ -1,7 +1,7 @@
 html
 {
-        background-image: -webkit-radial-gradient(45% 30%,ellipse, #FFF 0%,rgba(0,0,0,.6) 150%);
-        background-image: -moz-radial-gradient(40% 30%,ellipse, #FFF 0%,rgba(0,0,0,.6) 150%);
+        background-image: -webkit-radial-gradient(45% 30%,ellipse, #FFF 0%,rgba(0,0,0,.6) 50%);
+        background-image: -moz-radial-gradient(40% 30%,ellipse, #FFF 0%,rgba(0,0,0,.6) 50%);
         background-repeat:repeat-y;
         background-size: 100% 1000px;
     height:100%;

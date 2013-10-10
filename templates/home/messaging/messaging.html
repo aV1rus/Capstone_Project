@@ -30,7 +30,7 @@
         >
             <td><a href="{% url "sections.messaging.views.view"  msg.id  %}">View</a>
             <br/><a href="{% url "sections.messaging.views.compose"%}">Reply</a><br/>
-                <a href="#"> Delete </a>
+                <a href="{% url "sections.messaging.views.delete" msg.id %} "> Delete </a>
             </td>
             <td class = "subject"> {{ msg.subject }} </td>
             <td><a href='/home/user_profile?userId={{ msg.sender.id }}'>{{ msg.sender.username }}</a></td>
