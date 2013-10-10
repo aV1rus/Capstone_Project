@@ -11,8 +11,12 @@ import Constants
 @login_required(login_url="login.views.connect")
 def forum(request):
     # select m.name as name, m.acr as acr, COUNT(ft.id) as count, (select created_at from forum_comments where thread_ref_id=ft.id ORDER BY created_at DESC LIMIT 1 ) as last_post from home_major m JOIN forum_thread ft ON ft.category_id=m.id ORDER BY COUNT Desc;
-    category_list = Major.objects.all()
-    # category_list = Major.objects.raw("select m.name as name, m.acr as acr, COUNT(ft.id) as count, (select created_at from forum_comments where thread_ref_id=ft.id ORDER BY created_at DESC LIMIT 1 ) as last_post from home_major m JOIN forum_thread ft ON ft.category_id=m.id ORDER BY COUNT Desc")
+    # category_list = Major.objects.all()
+    # category_list = Major.objects.raw("select m.name as name, m.acr as acr, COALESCE(COUNT(ft.id), 0) as count, (select created_at from forum_comments where thread_ref_id=ft.id ORDER BY created_at DESC LIMIT 1 ) as last_post from home_major m JOIN forum_thread ft ON ft.category_id=m.id ORDER BY last_post Desc")
+
+
+    #
+    category_list = Major.objects.raw("select *, (SELECT COALESCE(COUNT(*), 0) FROM forum_thread WHERE category_id=m.id) as count, (select created_at from forum_comments where thread_ref_id=(select id from forum_thread WHERE category_id=m.id ORDER BY created_at DESC) ORDER BY created_at DESC LIMIT 1 ) as last_post from home_major m ORDER BY last_post DESC, count Desc");
     return render(request, 'home/forum/forum.html', locals())
 
 
