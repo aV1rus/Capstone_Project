@@ -15,19 +15,21 @@
             <li><a href="#" title="#title7" >title7</a></li>
         </ul>
     </div>
+    <section class='main_with_right_menu'>
 
-    <table class='padd_table'>
-        <tr class='header'>
-            <td> Date </td>
-            <td> Title </td>
-        </tr>
-        {% for n in newsfeed_list %}
-            <tr class='option'>
-                <td> {{ n.created_at }}</td>
-                <td> <a href='{{ n.url }}'>{{ n.title }}</a> </td>
+        <table class='padd_table'>
+            <tr class='header'>
+                <td> Date </td>
+                <td> Title </td>
             </tr>
-        {% endfor %}
+            {% for n in newsfeed_list %}
+                <tr class='option'>
+                    <td> {{ n.created_at }}</td>
+                    <td> <a href='{{ n.url }}'>{{ n.title }}</a> </td>
+                </tr>
+            {% endfor %}
 
-    </table>
+        </table>
+    </section>
 
 {% endblock %}

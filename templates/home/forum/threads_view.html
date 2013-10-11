@@ -26,7 +26,11 @@
                         </td>
                 </tr>
                 <tr class='tc_holder'>
-                    <td class='tc_holder_user_container'> <img class='forum_user_pic' src="{% static "images/sections/profile/default_profile_pic.jpg" %}" /><br/>{{ c.user.username }} </td>
+                    <td class='tc_holder_user_container'>
+                        <img class='forum_user_pic' src="{% static "images/sections/profile/default_profile_pic.jpg" %}" />
+                        <br/>
+                        <a href='/home/user_profile?userId={{ c.user.id }}'>{{ c.user.username }}</a>
+                    </td>
                     <td class='tc_holder_main'> <b>{{ c.title }}</b> <br/> {{ c.body }} </td>
                 </tr>
                 <tr class='tc_spacer'></tr>
