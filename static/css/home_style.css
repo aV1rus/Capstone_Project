@@ -19,10 +19,12 @@ body
     left: 10%;
     top: 15%;
     width: 80%;
+
     background: #DFDFDF;
     padding: 1em;
     border-radius: 5px;
     box-shadow: 10px 10px 5px #888888;
+
 }
 #main_content li
 {
@@ -93,10 +95,14 @@ body
     display:inline-block;
     margin-left:5px;
     border:inset 2px rgba(0,0,0,0);
+    background-image: -webkit-radial-gradient(50% 50%,ellipse, 	 #FFF 0%,rgba(0,0,0,.6) 150%);
+    background-image: -moz-radial-gradient(40% 30%,ellipse,  #FFF 0%,rgba(0,0,0,.6) 150%);
     width:85%;
     height:85%;
+    border-radius: 10px;
     padding:20px;
-    background-color: #EEE;
+
+   /* background-color: #EEE;*/
     overflow-y: scroll;
 }
 #footer

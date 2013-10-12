@@ -76,6 +76,7 @@
 .padd_table
 {
     width: 100%;
+    border-collapse: collapse;
 }
 .padd_table .header
 {
@@ -86,14 +87,14 @@
 
 .padd_table .option:hover
 {
-    background-color: rgba(200,200,200,.7);
+    background-color: rgba(255 ,255,255,.7);
 }
 
 .padd_table td
 {
     padding: .5em 1em;
-    border: #222222 solid 1px;
-    border-radius: 3px;
+    /*border: #222222 solid 1px;
+    border-radius: 3px;*/
 }
 
 

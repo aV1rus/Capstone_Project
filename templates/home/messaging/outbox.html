@@ -27,8 +27,8 @@
                class = "unread"
                {% endif %}
         >
-            <td><a href="{% url "sections.messaging.views.view"  msg.id  %}">View</a>
-            <br/><a href="{% url "sections.messaging.views.compose"%}">Reply</a><br/>
+            <td><a href="{% url "sections.messaging.views.view"  msg.id  %}">View  </a>
+            <a href="{% url "sections.messaging.views.compose"%}">Reply  </a>
             <a href="{% url "sections.messaging.views.delete" msg.id %} "> Delete </a>
 
             </td>
