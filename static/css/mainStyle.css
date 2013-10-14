@@ -1,8 +1,11 @@
 html
 {
 
-    background-image: -webkit-radial-gradient(45% 30%,ellipse, #FFF 0%,rgba(0,0,0,.6) 50%);
+   /* background-image: -webkit-radial-gradient(45% 30%,ellipse, #FFF 0%,rgba(0,0,0,.6) 50%);
     background-image: -moz-radial-gradient(40% 30%,ellipse, #FFF 0%,rgba(0,0,0,.6) 50%);
+    background-image: -webkit-radial-gradient(45% 30%,ellipse, 	 #555 0%,rgba(0,0,0,.6) 150%);
+    background-image: -moz-radial-gradient(40% 30%,ellipse,  #222 0%,rgba(0,0,0,.6) 150%);*/
+    background-color: white;
     background-repeat:repeat-y;
     background-size: 100% 1000px;
     height: 100%;
@@ -18,7 +21,8 @@ body{
     width:700px;
     height:300px;
     padding:20px;
-    color:#008;
+    /*color:#008;*/
+    color:black;
     text-shadow:0 1px .5px black;
     font-size: 48pt;
     display: inline-block;
@@ -29,6 +33,7 @@ a
     color:darkred;
     transition-delay:.1s;
     transition-duration:.5s;
+
 }
 a:hover
 {
@@ -40,14 +45,14 @@ a:hover
     height:300px;
     margin:auto;
     margin-top: 150px;
-    border:inset 1px black;
+    /*border:inset 1px black;*/
     border-radius:10px;
     color:white;
     text-shadow: 0 -2px 4px white;
     text-align:center ;
-    background-image: -webkit-radial-gradient(45% 30%,ellipse, 	 #222 0%,rgba(0,0,0,.6) 150%);
+    /*background-image: -webkit-radial-gradient(45% 30%,ellipse, 	 #222 0%,rgba(0,0,0,.6) 150%);
     background-image: -moz-radial-gradient(40% 30%,ellipse,  #222 0%,rgba(0,0,0,.6) 150%);
-    background-repeat:no-repeat;
+    background-repeat:no-repeat;*/
 }
 #registration_section
 {
@@ -59,7 +64,9 @@ a:hover
 
 input
 {
-    outline: none;
+    /*outline: none;*/
+    outline-color: blue;
+    border-color:black;
     width:300px;
     margin-top:30px;
     height:40px;
@@ -71,9 +78,43 @@ input
     text-align: center;
 }
 input[type= 'submit']
-{
-    color:#008;
-    background-color:#CCC;
+{/*
+    color:#000;
+    border:none;
+    background-color:#CCC;*/
+    -moz-box-shadow:inset 0px 1px 0px 0px #dcecfb;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #dcecfb;
+	box-shadow:inset 0px 1px 0px 0px #dcecfb;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #bddbfa), color-stop(1, #80b5ea) );
+	background:-moz-linear-gradient( center top, #bddbfa 5%, #80b5ea 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bddbfa', endColorstr='#80b5ea');
+	background-color:#bddbfa;
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	text-indent:0;
+	border:1px solid #84bbf3;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	font-style:normal;
+	height:40px;
+	line-height:40px;
+	text-decoration:none;
+	text-align:center;
+
+	text-shadow:1px 1px 0px #528ecc;
 }
 input:focus
 {
@@ -86,7 +127,7 @@ input:focus
 .login_error
 {
     /*position: absolute;*/
-    font-size: 32pt;
+    font-size: 20pt;
     text-align: center;
     text-shadow: 0 1px 1px black;
     color:#834C24;

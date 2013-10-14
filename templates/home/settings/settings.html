@@ -2,18 +2,30 @@
 {% load static %}
 {% block style %}
     {{ block.super }}
-    <link rel = "stylesheet" href = "{% static "css/mainSt5yle.css"%}"/>
+    <link rel = "stylesheet" href = "{% static "css/settings.css"%}"/>
+
 {% endblock %}
 
 {% block user_content %}
 
     <form action = "{% url "sections.settings.views.settings" %}" method = "post">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form.as_ul }}
     <input type = 'submit' value = 'Save Changes'/>
     </form>
     {% if notify %}
-    <h1> {{ message }} </h1>
+    <h1 class='notify' style='display:none'>{{ message }}</h1>
+
     {% endif %}
+
+    <script>
+
+        $(document).ready(function(){
+            $(".notify").fadeIn("slow");
+            $(".notify").fadeOut(3000);
+
+        });
+
+     </script>
 {% endblock %}
 

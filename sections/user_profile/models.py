@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-
+from home.models import Major
 
 # Create your models here.
 def validate_file_extension(value):
@@ -14,8 +14,8 @@ def validate_file_extension(value):
 class Profile(models.Model):
     picture = models.FileField(null=True, blank=True, upload_to="profile_pictures/", validators=[validate_file_extension])
     user = models.OneToOneField(User)
-    major = models.CharField(max_length=30, null=True)
-    headline = models.TextField(null=True)
+    major = models.ForeignKey(Major,null=True, blank = True)
+    headline = models.TextField(null=True, blank=True)
     #profile_picture = models.FileField(null=True,blank = True, upload_to ="/pictures")
 
     def __unicode__(self):

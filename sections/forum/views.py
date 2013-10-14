@@ -10,13 +10,34 @@ import Constants
 
 @login_required(login_url="login.views.connect")
 def forum(request):
-    # category_list = Major.objects.all().get
-    # counts = {}
-    # index = 0
-    # for c in category_list:
-    #     counts[index] = Thread.objects.filter(category = Major.objects.get(name = c.name)).count()
-    #     index = index + 1
-    category_list = Major.objects.raw("SELECT *, (SELECT COALESCE(COUNT(*), 0) FROM forum_thread WHERE category_id=m.id) as count, (select created_at from forum_comments where thread_ref_id=(select id from forum_thread WHERE category_id=m.id ORDER BY created_at DESC) ORDER BY created_at DESC LIMIT 1 ) as last_post from home_major m ORDER BY last_post DESC, count Desc");
+    category_list = Major.objects.all()
+
+    for c in category_list:
+        category = Major.objects.get(name = c.name)
+        threads = Thread.objects.filter(category = category)
+        c.count = threads.count()
+        ct = 0;
+        comments = Comments.objects.filter(thread_ref__in = threads).order_by('-created_at') # figure out how to filter based on queryset
+        if comments:
+            c.last_post = comments[0].created_at
+
+
+
+
+
+        # if thread:
+        #         comment = Comments.objects.filter(thread_ref = thread).order_by('-created_at')
+        #         if comment:
+        #             c.last_post = comment[0].created_at
+        # else:
+        #      c.last_post = "N/A"
+        #
+        # # last_post = Comments.objects.filter(thread_ref=Thread.objects.filter(category = Major.objects.get(name = c.name))).order_by('-created_at')
+        # # if last_post:
+        # #     c.last_post= last_post[0].created_at
+        # # else:
+        # #     c.last_post = ''
+        #     #category_list = Major.objects.raw("SELECT *, (SELECT COALESCE(COUNT(*), 0) FROM forum_thread WHERE category_id=m.id) as count, (select created_at from forum_comments where thread_ref_id=(select id from forum_thread WHERE category_id=m.id ORDER BY created_at DESC) ORDER BY created_at DESC LIMIT 1 ) as last_post from home_major m ORDER BY last_post DESC, count Desc");
 
     return render(request, 'home/forum/forum.html', locals())
 

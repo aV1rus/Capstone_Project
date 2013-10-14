@@ -24,8 +24,6 @@ def settings(request):
             m_user.save()
             profile.major = form.cleaned_data['major']
             profile.headline = form.cleaned_data['headline']
-            #user_profile.picture = form.cleaned_data['picture']
-            #handle_uploaded_file(request.FILES['file'])
             profile.save();
             notify = True
             message = "Information correctly updated."
