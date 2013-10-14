@@ -47,9 +47,11 @@ def threads(request):
             category = Major.objects.get(id=category_id)
             thread_list = Thread.objects.filter(category=category)
             for t in thread_list:
-                title = Comments.objects.filter(id=t.id)[:1]
-                if title:
-                    t.title = title[0].title
+                comments = Comments.objects.filter(thread_ref=t).order_by('created_at')
+                if comments:
+                    t.title = comments[0].title
+                    t.count = comments.count()
+                    t.last_post = comments[comments.count()-1]
 
     return render(request, 'home/forum/threads.html', locals())
 

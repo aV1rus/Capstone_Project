@@ -2,3 +2,13 @@
 {
     width: 400px;
 }
+.username_sml
+{
+    margin-left: 15px;
+    font-size: 13px;
+    color: #528ecc;
+}
+.full_width_table .tbl_row
+{
+    background-color: #EFEEF4;
+}
