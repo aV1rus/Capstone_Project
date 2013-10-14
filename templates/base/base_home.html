@@ -21,7 +21,7 @@
     {% block userbar %}
           <header class = "user_bar">
                 <span class = "welcome_link">Welcome, <a href = '{% url "sections.user_profile.views.userProfile"%}?userId={{ request.user.id }}' class = "settings_link">{{ request.user.username|capfirst  }}</a>!
-                <a href = "{% url "home.views.home" %}" class = "home_link" ><img src="{% static "images/home_icon.png" %}" alt="home" /></a></span>
+               </span>
 
               <span class = "logout_link">Log Out <a class = "logout_button" href = {% url "login.views.disconnect" %}>!</a>
                     </span>
@@ -36,6 +36,15 @@
 
         {% endblock %}
     </section>
+    <script>
+
+        $(document).ready(function(){
+            $(".notify").fadeIn("slow");
+            $(".notify").fadeOut(3000);
+
+        });
+
+     </script>
     <section id='footer'>
         Copyright The Fucking Badass, inc. 1993
     </section>

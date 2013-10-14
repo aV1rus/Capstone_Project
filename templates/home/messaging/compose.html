@@ -1,5 +1,9 @@
 {% extends "base/base_home.html" %}
-
+{% load static %}
+{% block style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "css/messages.css" %}"/>
+{% endblock %}
 
 {% block user_content %}
 
@@ -11,7 +15,7 @@
     </form>
 
     {% if notify %}
-    <h1> {{ message }} ! </h1>
+    <h1 class = "notify"> {{ message }} ! </h1>
     {% endif %}
 
 {% endblock %}
