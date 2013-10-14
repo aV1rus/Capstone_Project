@@ -3,6 +3,17 @@
 
 {% block extra_head_content %}
     <link rel = 'stylesheet' href="{% static "css/sections/forum/threads.css" %}" />
+    <script type="text/javascript">
+    $(document).ready(function(){
+     alert('test');
+});
+        $('tr').click( function() {
+            window.location = $(this).find('a').attr('href');
+        }).hover( function() {#}
+                    alert('test');
+                    $(this).toggleClass('jquery_link_hover');
+                });
+    </script>
 {% endblock %}
 
 {% block user_content %}
@@ -17,26 +28,26 @@
 
     <section class='main_with_right_menu'>
 
-    <table class='full_width_table padd_table'>
-        <tr class='header'>
-            <td> Title </td>
-            <td> # Posts </td>
-            <td> Last Post </td>
-        </tr>
-        {% for t in thread_list %}
-            <tr class='tbl_row option'>
-                <td class='forum_threads_title'>
-                    <a href='threads/view?threadId={{ t.id }}'>{{ t.title }}</a></a> <br/>
-                    <span class='username_sml'>{{ t.user.username }}</span>
-                </td>
-                <td class='forum_threads_count'>{{ t.count }}</td>
-                <td class='forum_threads_date'>
-                    {{ t.last_post.created_at }}<br/>
-                    <span class='username_sml'>{{ t.last_post.user.username }}</span>
-                </td>
+        <table class='full_width_table padd_table'>
+            <tr class='header'>
+                <td> Title </td>
+                <td> # Posts </td>
+                <td> Last Post </td>
             </tr>
-        {% endfor %}
-    </table>
+            {% for t in thread_list %}
+                <tr class='tbl_row option'>
+                    <td class='forum_threads_title'>
+                        <a href='threads/view?threadId={{ t.id }}'>{{ t.title }}</a></a> <br/>
+                        <span class='username_sml'>{{ t.user.username }}</span>
+                    </td>
+                    <td class='forum_threads_count'>{{ t.count }}</td>
+                    <td class='forum_threads_date'>
+                        {{ t.last_post.created_at }}<br/>
+                        <span class='username_sml'>{{ t.last_post.user.username }}</span>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
 
     </section>
 
