@@ -78,6 +78,7 @@
 {
     width: 100%;
     border-collapse: collapse;
+    background-color: #EFEEF4;
 }
 .padd_table .header
 {
@@ -86,9 +87,15 @@
     font-weight: bold;
 }
 
+.padd_table .option a{
+    text-decoration: none;
+    color: #528ecc;
+}
+
 .padd_table .option:hover
 {
     background-color: rgba(255 ,255,255,.7);
+    cursor: pointer;
 }
 
 .padd_table td

@@ -17,21 +17,28 @@
 
     <section class='main_with_right_menu'>
 
-    <table class='full_width_table padd_table'>
-        <tr class='header'>
-            <td> Title </td>
-            <td> Created By </td>
-            <td> Date </td>
-        </tr>
-        {% for t in thread_list %}
-            <tr class='option'>
-                <td class='forum_threads_title'> <a href='threads/view?threadId={{ t.id }}'>{{ t.title }}</a></a> </td>
-                <td class='forum_threads_user'> {{ t.user.username }} </td>
-                <td class='forum_threads_date'>{{ t.created_at }}</td>
+        <table class='full_width_table padd_table'>
+            <tr class='header'>
+                <td> Title </td>
+                <td> # Posts </td>
+                <td> Last Post </td>
             </tr>
-        {% endfor %}
-    </table>
+            {% for t in thread_list %}
+                <tr class='tbl_row option'>
+                    <td class='forum_threads_title'>
+                        <a href='threads/view?threadId={{ t.id }}'>{{ t.title }}</a></a> <br/>
+                        <span class='username_sml'>{{ t.user.username }}</span>
+                    </td>
+                    <td class='forum_threads_count'>{{ t.count }}</td>
+                    <td class='forum_threads_date'>
+                        {{ t.last_post.created_at }}<br/>
+                        <span class='username_sml'>{{ t.last_post.user.username }}</span>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
 
     </section>
+
 
 {% endblock %}

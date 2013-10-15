@@ -42,6 +42,11 @@
             $(".notify").fadeIn("slow");
             $(".notify").fadeOut(3000);
 
+            $('.option').click( function() {
+                window.location = $(this).find('a').attr('href');
+            }).hover( function() {
+                        $(this).toggleClass('jquery_link_hover');
+                    });
         });
 
      </script>
