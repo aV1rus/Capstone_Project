@@ -1,7 +1,7 @@
 from django.shortcuts import render,render_to_response,redirect
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import RequestContext,get_object_or_404
-from sections.messaging.forms import Compose
+from sections.messaging.forms import Compose,ReplyForm
 from sections.messaging.models import PrivateMessage
 
 @login_required(login_url="login.views.connect")
@@ -44,6 +44,21 @@ def view(request, message_id):
     message = get_object_or_404(PrivateMessage, id = message_id)
     message.viewed = True
     message.save()
+    notify = False
+    toast = ""
+    if request.method == 'POST':
+        form = ReplyForm(request.POST)
+        if form.is_valid():
+            PrivateMessage(sender = request.user, receiver = message.sender, subject = "RE:"+message.subject,
+                           content = form.cleaned_data['content']).save()
+            notify = True
+            toast = "Reply Sent!"
+        else:
+            notify = True
+            toast = "Error sending Reply"
+    else:
+        form = ReplyForm()
+
     return render_to_response('home/messaging/view_message.html', locals(), context_instance=RequestContext(request))
 
 @login_required(login_url="login.views.connect")

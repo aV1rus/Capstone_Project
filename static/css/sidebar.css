@@ -47,10 +47,11 @@
     position: relative;
     bottom:40px;
     left:80px;
+    font-size: .7em;
     border: solid 1px white;
     background-color: darkred;
     padding:5px;
-    border-radius: 50px;
+    border-radius: 10px;
     color:white;
     text-shadow: 0 -1px 3px black;
     margin-bottom:-10px;

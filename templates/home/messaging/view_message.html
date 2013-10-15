@@ -1,5 +1,26 @@
 {% extends "base/base_home.html" %}
+{% load static %}
+{% block style %}
+    {{ block.super }}
+     <link rel="stylesheet" href="{% static "css/messages.css" %}"/>
+{% endblock %}
 
 {% block user_content %}
-    {{ message }}
-{% endblock %}
+    <a href="{% url "sections.messaging.views.messaging" %}" class="nav_link"> <-- Back</a>
+
+    <h3>From: <a href='/home/user_profile?userId={{ message.sender.id }}'>{{ message.sender.username }}</a></h3>
+    <h3>On: {{ message.date_sent }}</h3>
+    <h2> Content:</h2>
+    <p class="message_content">
+        {{ message.content }}
+    </p>
+    <form action = "{% url "sections.messaging.views.view" message.id %}" method="POST">
+    {% csrf_token %}
+        {{ form.as_p }}
+    <input type = 'submit' value="Reply"/>
+    </form>
+    {% if notify %}
+        <h1 class="notify"> {{ toast }}</h1>
+    {% endif %}
+
+{% endblock %}s

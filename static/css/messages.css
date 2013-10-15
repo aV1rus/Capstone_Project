@@ -29,3 +29,23 @@ thead
 th{
     border-right: solid 1px white;
 }
+.message_content
+{
+    padding: 20px;
+    background-color: #FFF;
+    opacity: 1;
+    border: inset 2px #84bbf3;
+    font-weight: bold;
+}
+h2,h3
+{
+    border-bottom: dotted 1px black;
+}
+label[for = '']
+{
+
+}
+textarea
+{
+    width: 100%;
+}
