@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block user_content %}
-    <h1> Messages</h1>
+    <h1> Inbox</h1>
     <a href = '{% url "sections.messaging.views.compose" %}' class = 'nav_link'> New Message </a>
     <a href= '{% url 'sections.messaging.views.outbox' %}' class = 'nav_link'> Outbox </a>
 
@@ -31,8 +31,8 @@
                 msg_row"
         >
             <td><a href="{% url "sections.messaging.views.view"  msg.id  %}">View  </a>
-            <a href="{% url "sections.messaging.views.compose"%}">Reply</a>
-            <a href="{% url "sections.messaging.views.delete" msg.id %} "> Delete </a>
+
+            <a href="{% url "sections.messaging.views.delete" msg.id %} ">  Delete </a>
             </td>
             <td class = "subject"> {{ msg.subject }} </td>
             <td><a href='/home/user_profile?userId={{ msg.sender.id }}'>{{ msg.sender.username }}</a></td>

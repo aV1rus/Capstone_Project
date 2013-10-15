@@ -10,7 +10,7 @@ import Constants
 
 @login_required(login_url="login.views.connect")
 def forum(request):
-    category_list = Major.objects.all()
+    category_list = Major.objects.all().order_by('name')
 
     for c in category_list:
         category = Major.objects.get(name=c.name)

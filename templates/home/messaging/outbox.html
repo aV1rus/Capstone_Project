@@ -6,12 +6,12 @@
 {% endblock %}
 
 {% block user_content %}
-
+    <h1> Outbox </h1>
     <a href = '{% url "sections.messaging.views.compose" %}' class = 'nav_link'> New Message </a>
     <a href = '{% url "sections.messaging.views.messaging" %}' class = 'nav_link'>Inbox</a>
 
     <table>
-        <thead>
+        <thead class="msg_head">
             <tr>
                 <th scope="col"> Action </th>
                 <th scope="col"> Subject </th>
@@ -24,12 +24,13 @@
         <tbody>
     {% for msg in messages %}
         <tr
+            class =' msg_row
               {% if not msg.viewed %}
-               class = "unread"
+                unread
                {% endif %}
+               '
         >
             <td><a href="{% url "sections.messaging.views.view"  msg.id  %}">View  </a>
-            <a href="{% url "sections.messaging.views.compose"%}">Reply  </a>
             <a href="{% url "sections.messaging.views.delete" msg.id %} "> Delete </a>
 
             </td>
