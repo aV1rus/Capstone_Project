@@ -4,7 +4,8 @@
 
         <a href="/home/projects" class="nav_link"> < Back</a>
 
-        {{ project.name }}
+        <h1>{{ project.name }}</h1>
+    {% comment %}
         <div id='right_main'>
             <ul id="nav-right">
                 <li><a href="/home/projects/commit?projId={{ project.id }}">New Commit</a></li>
@@ -12,6 +13,14 @@
                 <li><a href="#">Contributors</a></li>
                 <li><a href="#">Invite</a></li>
             </ul>
+        </div>
+    {% endcomment %}
+
+        <div class = 'proj_nav'>
+            <a href="/home/projects/commit?projId={{ project.id }}">New Commit</a>
+            <a href="#">Project Posts</a>
+            <a href="#">Contributors</a>
+            <a href="#">Invite</a>
         </div>
 
     <section class='main_with_right_menu'>

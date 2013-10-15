@@ -7,12 +7,17 @@
 
 {% block user_content %}
 
-    <a href='/home/forum' class="nav_link">< Back</a><br/>
-
+    <a href='/home/forum' class="nav_link">< Back</a>
+    {% comment %}
     <div id='right_main'>
         <ul id="nav-right">
             <li><a href='threads/new?catId={{ category_id }}'>New Thread</a></li>
         </ul>
+    </div>
+    {% endcomment %}
+    <h1> Thread List </h1>
+    <div class = 'proj_nav'>
+        <a href='threads/new?catId={{ category_id }}'>New Thread</a>
     </div>
 
     <section class='main_with_right_menu'>

@@ -20,9 +20,5 @@ input
 
 
 form{
-   width: 500px;
    padding: 10px;
-   margin-right: auto;
-   margin-left:auto;
-   border: solid 1px black;
 }

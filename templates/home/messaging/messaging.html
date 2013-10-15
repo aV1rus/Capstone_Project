@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block user_content %}
-
+    <h1> Messages</h1>
     <a href = '{% url "sections.messaging.views.compose" %}' class = 'nav_link'> New Message </a>
     <a href= '{% url 'sections.messaging.views.outbox' %}' class = 'nav_link'> Outbox </a>
 
