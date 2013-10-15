@@ -108,7 +108,7 @@
 {
 
 }
-.proj_nav a
+.proj_nav a, .button
 {
     -moz-box-shadow:inset 0px 1px 0px 0px #fbebdc;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #fbebdc;
@@ -137,12 +137,13 @@
 	font-size:15px;
 	font-weight:bold;
 	font-style:normal;
-	height:40px;
-	line-height:40px;
+	height:20px;
+	line-height:20px;
 	text-decoration:none;
 	text-align:center;
 	text-shadow:1px 1px 0px #cc9052;
     padding: 3px;
+    min-width: 20px;
 }
 .proj_nav a:hover
 {
@@ -154,4 +155,10 @@
 {
     height: 200px;
     width: 200px;
+}
+
+/*Float All Right */
+.flt_right
+{
+    float: right;
 }

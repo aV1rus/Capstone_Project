@@ -12,8 +12,18 @@ class Projects(models.Model):
         return " {0} {1} {2}".format(self.user, self.name, self.description)
 
 
-class ProjectUpdates(models.Model):
+class ProjectFile(models.Model):
     project_ref = models.ForeignKey(Projects)                   #reference to main project
+    user = models.ForeignKey(User)                              #User that added project file
+    name = models.CharField(max_length=40)                      #File Name
+    description = models.CharField(max_length=300)              #description of file uploaded
+
+    def __unicode__(self):
+        return " {0} {1} {2}".format(self.user, self.name, self.description)
+
+
+class FileUpdates(models.Model):
+    file_ref = models.ForeignKey(ProjectFile)                   #reference to main project
     user = models.ForeignKey(User)                              #user that made the change/update
     description = models.CharField(max_length=300)              #description of change made
     file_location = models.CharField(max_length=50)             #Location on server file is saved at

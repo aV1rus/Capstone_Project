@@ -1,5 +1,4 @@
 from django import forms
-from sections.projects.models import Projects, ProjectUpdates
 
 
 class CreateThreadForm(forms.Form):
