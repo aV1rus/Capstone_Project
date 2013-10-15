@@ -1,6 +1,11 @@
 #forum_thread_main #id_body
 {
-    width: 700px;
+    width: 100%;
+}
+table
+{
+    width: 100%;
+
 }
 
 .forum_user_pic{ width: 100px; }

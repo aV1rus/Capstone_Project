@@ -1,8 +1,10 @@
 td,table
 {
-    border-bottom:dotted 1px black;
+
     border-collapse: collapse;
     padding:2px;
+    color:#528ecc;
+    padding:10px;
 }
 table{
     margin-top: 10px;
@@ -11,13 +13,22 @@ table{
     margin-right: auto;
     width:100%;
 }
-thead
+thead.msg_head
 {
     color:white;
     text-shadow: 0 -1px 2px black;
     /*background-color: deepskyblue;*/
     background-color: rgba(100,100,250,.7);
 }
+.msg_row
+{
+    background-color: #EFEEF4;
+}
+.msg_row:hover
+{
+    background-color: white;
+}
+
 .subject
 {
     font-weight: bold;

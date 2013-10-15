@@ -11,7 +11,7 @@
     <a href= '{% url 'sections.messaging.views.outbox' %}' class = 'nav_link'> Outbox </a>
 
     <table>
-        <thead>
+        <thead class="msg_head">
             <tr>
                 <th scope="col"> Action </th>
                 <th scope="col"> Subject </th>
@@ -24,9 +24,11 @@
         <tbody>
     {% for msg in messages %}
         <tr
+            class = "
               {% if not msg.viewed %}
-               class = "unread"
+                unread
                {% endif %}
+                msg_row"
         >
             <td><a href="{% url "sections.messaging.views.view"  msg.id  %}">View  </a>
             <a href="{% url "sections.messaging.views.compose"%}">Reply</a>
