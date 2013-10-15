@@ -7,8 +7,8 @@
 
 {% block user_content %}
 
-    <a href = '{% url "sections.messaging.views.compose" %}'> New Message </a>
-    <a href= '{% url 'sections.messaging.views.outbox' %}'> Outbox </a>
+    <a href = '{% url "sections.messaging.views.compose" %}' class = 'nav_link'> New Message </a>
+    <a href= '{% url 'sections.messaging.views.outbox' %}' class = 'nav_link'> Outbox </a>
 
     <table>
         <thead>
