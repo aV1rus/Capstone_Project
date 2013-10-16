@@ -32,7 +32,7 @@
                 </tr>
                 <tr class='tc_holder'>
                     <td class='tc_holder_user_container'>
-                        <img class='forum_user_pic' src="{% static "images/sections/profile/default_profile_pic.jpg" %}" />
+                        <img class='forum_user_pic' src="{{ MEDIA_URL }}{{ c.user.profile.picture }}" />
                         <br/>
                         <a href='/home/user_profile?userId={{ c.user.id }}'>{{ c.user.username }}</a>
                     </td>
