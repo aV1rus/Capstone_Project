@@ -33,9 +33,9 @@ thead.msg_head
 {
     font-weight: bold;
 }
-.unread
+.unread, .unread:hover
 {
-    color:darkred;
+    background-color:burlywood;
 }
 th{
     border-right: solid 1px white;
