@@ -67,17 +67,18 @@ def addFile(request):
             project = Projects.objects.get(id=project_id)
 
     if request.method == "POST":
-        form = AddFileForm(request.POST)
+        form = AddFileForm(request.POST, request.FILES)
         if form.is_valid():
             project_id = request.POST['projId']
             project = Projects.objects.get(id=project_id)
             name = form.cleaned_data['name']
+            fileUpload = request.FILES["file"]
             description = form.cleaned_data['description']
             file = ProjectFile(project_ref=project, user=request.user, name=name, description=description)
             if file:
                 #TODO :: HANDLE UPLOAD OF FILE
                 file.save()
-                FileUpdates(file_ref=file, user=request.user, description='Initial Upload', file_location='TEST').save()
+                FileUpdates(file_ref=file, user=request.user, description='Initial Upload', file_upload=fileUpload).save()
                 # handle_uploaded_file(request.FILES['file'])
                 PROJECT_URL = "/home/projects/project_info?projId="+project_id
                 NewsFeed(user=request.user, title=Constants.NEWSFEED_PROJECT_COMMIT.format(request.user, project.name), url=PROJECT_URL).save()
@@ -101,12 +102,13 @@ def fileUpdate(request):
             file = ProjectFile.objects.get(id=file_id)
 
     if request.method == "POST":
-        form = UploadFileForm(request.POST)
+        form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             file_id = request.POST['fileId']
             file = ProjectFile.objects.get(id=file_id)
             description = form.cleaned_data['description']
-            file_update = FileUpdates(file_ref=file, user=request.user, description=description, file_location='TEST')
+            fileUpload = request.FILES["file"]
+            file_update = FileUpdates(file_ref=file, user=request.user, description=description, file_upload=fileUpload)
             if file_update:
                 #TODO :: HANDLE UPLOAD OF FILE
                 file_update.save()

@@ -3,5 +3,6 @@
 *.pyc
 *.idea
 *.db
+media/
 dev_settings.py
 local_settings.py
