@@ -1,0 +1,14 @@
+{% extends "base/base_home.html" %}
+
+{% block user_content %}
+
+    <a href="/home/projects" class="nav_link"> < Back</a>
+
+    <h1>{{ project.name }}</h1>
+    {% include "home/projects/includes/proj_menu.html" %}
+
+    <section class='main_with_right_menu'>
+
+    </section>
+
+{% endblock %}

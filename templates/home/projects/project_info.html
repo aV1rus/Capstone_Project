@@ -1,44 +1,54 @@
 {% extends "base/base_home.html" %}
+{% load static %}
+
+{% block extra_head_content %}
+    <link rel = 'stylesheet' href="{% static "css/sections/projects/project_info.css" %}" />
+{% endblock %}
 
 {% block user_content %}
 
-        <a href="/home/projects" class="nav_link"> < Back</a>
+    <a href="/home/projects" class="nav_link"> < Back</a>
 
-        <h1>{{ project.name }}</h1>
-    {% comment %}
-        <div id='right_main'>
-            <ul id="nav-right">
-                <li><a href="/home/projects/commit?projId={{ project.id }}">New Commit</a></li>
-                <li><a href="#">Project Posts</a></li>
-                <li><a href="#">Contributors</a></li>
-                <li><a href="#">Invite</a></li>
-            </ul>
+    <h1>{{ project.name }}</h1>
+    <hr/>
+    <section>
+        <div id='left_div'>
+            <img id='proj_img' src="{% static "images/sections/profile/default_profile_pic.jpg" %}" />
+            <span id='proj_contr'><ul>
+                <li>
+                    User 1
+                </li><li>
+                User 1
+            </li><li>
+                User 1
+            </li><li>
+                User 1
+            </li><li>
+                User 1
+            </li>
+            </ul></span>
+
+            <div id='left_div_lower'>
+                <h4>Description</h4>
+                <span id='proj_desc'>{{ project.description }}</span>
+            </div>
         </div>
-    {% endcomment %}
+        <div id='right_div'>
+            <a class='button' href="/home/projects/addFile?projId={{ project.id }}">+</a>
+            <a class='flt_right' href=''>All Commits</a>
 
-        <div class = 'proj_nav'>
-            <a href="/home/projects/commit?projId={{ project.id }}">New Commit</a>
-            <a href="#">Project Posts</a>
-            <a href="#">Contributors</a>
-            <a href="#">Invite</a>
+
+            <table id='proj_file_table'>
+                {% for p in project_files %}
+                    <tr>
+                        <td class='proj_file_name'><a href='/home/projects/file_info?fileId={{ p.id }}'>{{ p.name }}</a></td>
+                        <td class='proj_file_download'><a href=''>Download</a></td>
+                        <td class='proj_file_upload'><a href='/home/projects/file_update?fileId={{ p.id }}'>Upload</a></td>
+                        <td class='proj_file_version'>(.01)</td>
+                    </tr>
+                {%  endfor %}
+            </table>
         </div>
-
-    <section class='main_with_right_menu'>
-        <table class='padd_table'>
-            <tr class='header'>
-                <td>Date</td>
-                <td>Description</td>
-                <td>Download Link</td>
-            </tr>
-            {% for p in project_updates %}
-                <tr class='row'>
-                    <td>{{ p.created_at }}<br/>Contributor: <b>{{ p.user.username }}</b></td>
-                    <td>{{ p.description }}</td>
-                    <td><a href='#'>Link</a></td>
-                </tr>
-            {%  endfor %}
-        </table>
-
     </section>
 
 {% endblock %}

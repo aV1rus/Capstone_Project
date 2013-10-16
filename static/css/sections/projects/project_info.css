@@ -1,0 +1,41 @@
+#proj_img
+{
+    width: 50%;
+}
+#proj_contr
+{
+    width: 50%;
+    float: left;
+}
+
+#left_div
+{
+    width: 30%;
+    float:left;
+    padding-right: 20px;
+    border-right: black solid 1px;
+}
+#right_div
+{
+    padding-left: 20px;
+    width: 65%;
+    float:left;
+}
+
+#proj_file_table{
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 80%;
+}
+.proj_file_name{
+    width: 60%;
+}
+.proj_file_download{
+    width: 10%;
+}
+.proj_file_upload{
+    width: 10%;
+}
+.proj_file_version{
+    width: 5%;
+}
