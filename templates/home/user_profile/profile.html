@@ -3,7 +3,7 @@
 
 {% block user_content %}
 
-    <img id='profile_main_pic' src="{% static "images/sections/profile/default_profile_pic.jpg" %}" />
+    <img id='profile_main_pic' src="{{ MEDIA_URL }}{{ user_profile.picture }}" />
     {{ user.username }}<br/>
     {{ user.first_name }}
     {{ user.last_name }} <br/>

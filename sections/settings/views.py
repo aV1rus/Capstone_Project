@@ -14,13 +14,17 @@ def settings(request):
     notify = False
     message = ""
     if request.method == 'POST':
-        form = SettingsForm(request.POST)
+        form = SettingsForm(request.POST, request.FILES)
         if form.is_valid():
             m_user = User.objects.get(id=request.user.id)
             m_user.first_name = form.cleaned_data['first_name']
             m_user.last_name = form.cleaned_data['last_name']
             m_user.email = form.cleaned_data['email']
             m_user.save()
+
+            if request.FILES:
+                profile.picture = request.FILES['picture']
+
             profile.major = form.cleaned_data['major']
             profile.headline = form.cleaned_data['headline']
             profile.save()
@@ -34,5 +38,7 @@ def settings(request):
     else:
         form = SettingsForm(initial={'first_name': request.user.first_name, 'last_name': request.user.last_name,
             'email': request.user.email, 'major': profile.major, 'headline': profile.headline})
+
+    profile = Profile.objects.get(user=request.user)
 
     return render(request, "home/settings/settings.html", locals())

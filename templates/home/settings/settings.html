@@ -1,5 +1,10 @@
 {% extends "base/base_home.html" %}
 {% load static %}
+
+{% block extra_head_content %}
+    <link rel = 'stylesheet' href="{% static "css/sections/settings/settings.css" %}" />
+{% endblock %}
+
 {% block style %}
     {{ block.super }}
     <link rel = "stylesheet" href = "{% static "css/settings.css"%}"/>
@@ -8,7 +13,8 @@
 
 {% block user_content %}
     <h1>Settings</h1>
-    <form action = "{% url "sections.settings.views.settings" %}" method = "post">
+    <img id='user_img' src='{{ MEDIA_URL }}{{ profile.picture }}' />
+    <form action = "{% url "sections.settings.views.settings" %}" method = "post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <input type = 'submit' value = 'Save Changes'/>

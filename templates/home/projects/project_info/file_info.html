@@ -24,7 +24,7 @@
                     <td class='file_col1'>{{ forloop.counter }}</td>
                     <td class='file_col2'>{{ f.created_at }}<br/>Contributor: <b>{{ f.user.username }}</b></td>
                     <td class='file_col3'>{{ f.description }}</td>
-                    <td class='file_col4'><a href='#'>Link</a></td>
+                    <td class='file_col4'><a href='{{ MEDIA_URL }}{{ f.file_upload }}'>Link</a></td>
                 </tr>
             {%  endfor %}
         </table>

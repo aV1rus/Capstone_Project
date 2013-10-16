@@ -26,7 +26,7 @@ class FileUpdates(models.Model):
     file_ref = models.ForeignKey(ProjectFile)                   #reference to main project
     user = models.ForeignKey(User)                              #user that made the change/update
     description = models.CharField(max_length=300)              #description of change made
-    file_location = models.CharField(max_length=50)             #Location on server file is saved at
+    file_upload = models.FileField(upload_to='project_files/')  #File saved on server
     created_at = models.DateTimeField(auto_now_add=True)        #Date change was made
 
     def __unicode__(self):

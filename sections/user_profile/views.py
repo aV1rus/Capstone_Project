@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Profile
@@ -11,4 +11,4 @@ def userProfile(request):
             user_id = request.GET['userId']
             user = User.objects.get(id=user_id)
             user_profile = Profile.objects.get(user=user)
-    return render_to_response('home/user_profile/profile.html', locals())
+    return render(request, 'home/user_profile/profile.html', locals())

@@ -3,5 +3,7 @@
 *.pyc
 *.idea
 *.db
+media/user_photos/
+media/project_files/
 dev_settings.py
 local_settings.py
