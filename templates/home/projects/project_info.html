@@ -13,7 +13,7 @@
     <hr/>
     <section>
         <div id='left_div'>
-            <img id='proj_img' src="{% static "images/sections/profile/default_profile_pic.jpg" %}" />
+            <img id='proj_img' src="{{ MEDIA_URL }}{{ project.user.profile.picture }}" />
             <span id='proj_contr'><ul>
                 <li>
                     User 1
