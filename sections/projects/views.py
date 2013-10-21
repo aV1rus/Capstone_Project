@@ -7,6 +7,7 @@ from sections.newsfeed.models import NewsFeed
 
 @login_required(login_url="login.views.connect")
 def projects(request):
+    # projects = ProjectMembers.objects.filter(user=request.user)
     project_list = Projects.objects.all()
     return render(request, 'home/projects/projects.html', locals())
 
@@ -53,8 +54,13 @@ def projectInfo(request):
             project_id = request.GET['projId']
             project = Projects.objects.get(id=project_id)
             project_files = ProjectFile.objects.filter(project_ref=project_id)
-        else:
-            project_list = Projects.objects.all()
+            user_list = ProjectMembers.objects.filter(project=project)
+
+
+
+
+        # else:
+        #     project_list = Projects.objects.all()
     return render(request, 'home/projects/project_info.html', locals())
 
 
@@ -136,6 +142,34 @@ def fileInfo(request):
             file_uploads = FileUpdates.objects.filter(file_ref=file).order_by('-created_at')
 
     return render(request, 'home/projects/project_info/file_info.html', locals())
+
+
+@login_required(login_url="login.views.connect")
+def invite(request):
+    searchFilter = ''
+    users = User.objects.all()
+    message = ''
+    if request.method == 'GET':
+        if request.GET:
+            project_id = request.GET['projId']
+            project = Projects.objects.get(id=project_id)
+            searchFilter = request.GET['searchFilter']
+            user_id = request.GET['userId']
+
+            if searchFilter != "":
+                users = User.objects.filter(username__contains=searchFilter) | User.objects.filter(email__contains=searchFilter) | User.objects.filter(first_name__contains=searchFilter)
+
+            if user_id != "":
+                user = User.objects.get(id=user_id)
+                check = ProjectMembers.objects.filter(user=user, project=project)
+                if check.count() is 0:
+                    ProjectMembers(user=user, project=project).save()
+                    NewsFeed(user=request.user, title=Constants.NEWSFEED_PROJECT_INVITED.format(request.user, project.name), url='#').save()
+                    message = user.username+' added'
+                else:
+                    message = user.username+' is already a memeber of '+project.name
+
+    return render(request, 'home/projects/invite.html', locals())
 
 
 def handle_uploaded_file(f):

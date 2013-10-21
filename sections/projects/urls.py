@@ -7,4 +7,5 @@ urlpatterns = patterns('sections.projects.views',
    url(r'^addFile', 'addFile'),
    url(r'^file_update', 'fileUpdate'),
    url(r'^file_info', 'fileInfo'),
+   url(r'^invite', 'invite'),
 )

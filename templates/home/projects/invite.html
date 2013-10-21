@@ -1,0 +1,60 @@
+{% extends "base/base_home.html" %}
+
+
+{% block user_content %}
+
+    <a href='/home/forum' class = 'nav_link'>< Back</a>
+
+    <form name="search" class="form-search" method="get" action="#">
+        <input type='hidden' name='projId' value='{{ project_id }}' />
+        <input name="searchFilter" type="text" class="search-query input-large" {#onkeypress="return submitenter(this,event)" #} value='{{ searchFilter }}'>
+        <input type='hidden' name='userId' value='' />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <br />
+
+
+
+    <section class='section'>
+
+        <table class='padd_table'>
+            <tr class='header'><td>
+
+            </td><td>
+                Username
+            </td><td>
+                Email
+            </td><td>
+                Member Since
+            </td><td>
+                Projects Created
+            </td><td>
+                Contributions
+            </td></tr>
+            {% for u in users %}
+                {#            {% if u.isActive %}#}
+
+                <tr class='option'><td>
+                    <a href='?projId={{ project_id }}&userId={{ u.id }}&searchFilter='>Invite</a>
+                </td><td>
+                    <a href='/home/user_profile?userId={{ u.id }}'>{{ u.username }}</a>
+                </td><td>
+                    {{ u.email }}
+                </td><td>
+                    {{ u.date_joined }}
+                </td><td>
+                    0
+                </td><td>
+                    0
+                </td></tr>
+
+                {#            {% endif %}#}
+            {% endfor %}
+        </table>
+{{ message }}
+    </section>
+
+{% endblock %}
+
+

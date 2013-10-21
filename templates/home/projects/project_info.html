@@ -14,19 +14,16 @@
     <section>
         <div id='left_div'>
             <img id='proj_img' src="{{ MEDIA_URL }}{{ project.user.profile.picture }}" />
-            <span id='proj_contr'><ul>
-                <li>
-                    User 1
-                </li><li>
-                User 1
-            </li><li>
-                User 1
-            </li><li>
-                User 1
-            </li><li>
-                User 1
-            </li>
-            </ul></span>
+            <ul id='proj_contr'>
+                {% for u in user_list %}
+                    <li>{{ u.user.username }}</li>
+                {% endfor %}
+            {%  if request.user == project.user %}
+                <li><br/>
+                    <a href='/home/projects/invite?projId={{ project.id }}&userId=&searchFilter='>Invite More</a>
+                </li>
+            {% endif %}
+            </ul>
 
             <div id='left_div_lower'>
                 <h4>Description</h4>

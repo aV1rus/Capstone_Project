@@ -34,8 +34,8 @@ class FileUpdates(models.Model):
 
 
 class ProjectMembers(models.Model):
-    user = models.ManyToManyField(User)                         #User referencing
-    project = models.ManyToManyField(Projects)                  #project referencing
+    user = models.ForeignKey(User)                         #User referencing
+    project = models.ForeignKey(Projects)                  #project referencing
 
     def __unicode__(self):
         return " {0} {1}".format(self.user, self.project)

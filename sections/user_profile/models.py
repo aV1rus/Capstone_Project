@@ -17,7 +17,18 @@ class Profile(models.Model):
     user = models.OneToOneField(User)
     major = models.ForeignKey(Major, null=True, blank=True)
     headline = models.TextField(null=True, blank=True)
-    # profile_picture = models.FileField(null=True, blank=True, upload_to="user_photos", default='defaults/default_profile_pic.jpg')
 
     def __unicode__(self):
         return "Profile for User {0} {1} <{3}>. Last visit on {2}".format(self.user.first_name, self.user.last_name, self.user.last_login, self.user.username)
+
+
+
+# This will be ignored for time being because we should consider making EVERYONE friends by default or ignoring the friend factor since we all go to same school...
+# EXAMPLE :: At work I can see everyone's profile that works for the company
+#
+# class Friends(models.Model):
+#     user_1 = models.ForeignKey(User)
+#     user_2 = models.ForeignKey(User)
+#
+#     def __unicode__(self):
+#         return "{0} {1}".format(self.user_1.first_name, self.user_2.first_name)
