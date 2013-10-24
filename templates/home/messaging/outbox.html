@@ -36,7 +36,7 @@
 
             </td>
             <td class = "subject"> {{ msg.subject }} </td>
-            <td><a href='/home/user_profile?userId={{ msg.receiver.id }}'>{{ msg.receiver.username }}</a></td>
+            <td><a href='{% url 'sections.user_profile.views.userProfile' %}?userId={{ msg.receiver.id }}'>{{ msg.receiver.username }}</a></td>
             <td> {{ msg.content|truncatechars:80 }}</td>
             <td> {{ msg.date_sent }}</td>
 

@@ -4,7 +4,7 @@
 {% block user_content %}
 
     <section id="proj_container">
-        <a href="/home/projects" class="nav_link">< back</a>
+        <a href="{% url 'sections.projects.views.projects' %}" class="nav_link">< back</a>
 
         <h1>{{ project.name }}</h1>
 

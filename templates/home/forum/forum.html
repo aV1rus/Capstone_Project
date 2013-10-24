@@ -6,7 +6,7 @@
 
     <!-- <div id='right_main'>
         <ul id="nav-right">-->
-            <a href='find/users' title="Search for Users" class = 'nav_link'>Find Users</a>
+            <a href='{% url 'sections.forum.views.findUsers' %}' title="Search for Users" class = 'nav_link'>Find Users</a>
        <!-- </ul>
     </div>-->
 
@@ -21,7 +21,7 @@
             </tr>
             {% for c in category_list %}
                 <tr class='option'>
-                    <td> <a href='threads?catId={{ c.id }}'>{{ c.name }}</a> </td>
+                    <td> <a href='{% url 'sections.forum.views.threads' %}?catId={{ c.id }}'>{{ c.name }}</a> </td>
                     <td> {{ c.acr }} </td>
                     <td>{{ c.count }}</td>
                     <td>{{ c.last_post }}</td>

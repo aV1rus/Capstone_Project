@@ -1,5 +1,5 @@
 <div class = 'proj_nav'>
-            <a href="/home/projects/commit?projId={{ project.id }}">New Commit</a>
+            <a href="{% url 'sections.projects.views.addFile' %}?projId={{ project.id }}">New Commit</a>
             <a href="#">Project Posts</a>
             <a href="#">Contributors</a>
             <a href="#">Invite</a>

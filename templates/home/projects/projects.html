@@ -14,7 +14,7 @@
             </ul>
         </div>
         {% endcomment %}
-    <a class='nav_link' href='add_new'>Create New Project</a>
+    <a class='nav_link' href='{% url 'sections.projects.views.addNew' %}'>Create New Project</a>
 
     <section class="main_with_right_menu">
         <table class='padd_table'>
@@ -25,7 +25,7 @@
             </tr>
             {% for p in project_list %}
                 <tr class='option'>
-                    <td class='projects_title_row'> <a href="project_info?projId={{ p.id }}">{{ p.name }}</a> </td>
+                    <td class='projects_title_row'> <a href="{% url 'sections.projects.views.projectInfo' %}?projId={{ p.id }}">{{ p.name }}</a> </td>
                     <td class='projects_desc_row'> {{ p.description|truncatechars:160 }} </td>
                     <td class='projects_date_row'> {{ p.created_at }} </td>
                 </tr>

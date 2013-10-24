@@ -4,7 +4,7 @@
 {% block user_content %}
 
     <section id="proj_container">
-    <a href="/home/projects/project_info?projId={{ file.project_ref.id }}" class="nav_link"> < Back</a>
+    <a href="{% url 'sections.projects.views.projectInfo' %}?projId={{ file.project_ref.id }}" class="nav_link"> < Back</a>
 
         <h1>{{ file.name }}</h1>
 

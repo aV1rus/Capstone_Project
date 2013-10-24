@@ -7,7 +7,7 @@
 
 {% block user_content %}
 
-    <a href='/home/forum' class="nav_link">< Back</a>
+    <a href='{% url 'sections.forum.views.forum' %}' class="nav_link">< Back</a>
     {% comment %}
     <div id='right_main'>
         <ul id="nav-right">
@@ -17,7 +17,7 @@
     {% endcomment %}
     <h1> Thread List </h1>
     <div class = 'proj_nav'>
-        <a href='threads/new?catId={{ category_id }}'>New Thread</a>
+        <a href='{% url 'sections.forum.views.thread_new' %}?catId={{ category_id }}'>New Thread</a>
     </div>
 
     <section class='main_with_right_menu'>
@@ -31,7 +31,7 @@
             {% for t in thread_list %}
                 <tr class='tbl_row option'>
                     <td class='forum_threads_title'>
-                        <a href='threads/view?threadId={{ t.id }}'>{{ t.title }}</a></a> <br/>
+                        <a href='{% url 'sections.forum.views.thread_view' %}?threadId={{ t.id }}'>{{ t.title }}</a></a> <br/>
                         <span class='username_sml'>{{ t.user.username }}</span>
                     </td>
                     <td class='forum_threads_count'>{{ t.count }}</td>

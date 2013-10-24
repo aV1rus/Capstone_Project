@@ -3,7 +3,7 @@
 
 {% block user_content %}
 
-    <a href='/home/forum' class = 'nav_link'>< Back</a>
+    <a href='{% url 'sections.projects.views.projectInfo' %}' class = 'nav_link'>< Back</a>
 
     <form name="search" class="form-search" method="get" action="#">
         <input type='hidden' name='projId' value='{{ project_id }}' />

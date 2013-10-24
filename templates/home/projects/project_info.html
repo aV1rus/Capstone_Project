@@ -7,7 +7,7 @@
 
 {% block user_content %}
 
-    <a href="/home/projects" class="nav_link"> < Back</a>
+    <a href="{% url 'sections.projects.views.projects' %}" class="nav_link"> < Back</a>
 
     <h1>{{ project.name }}</h1>
     <hr/>
@@ -20,7 +20,7 @@
                 {% endfor %}
             {%  if request.user == project.user %}
                 <li><br/>
-                    <a href='/home/projects/invite?projId={{ project.id }}&userId=&searchFilter='>Invite More</a>
+                    <a href='{% url 'sections.projects.views.invite' %}?projId={{ project.id }}&userId=&searchFilter='>Invite More</a>
                 </li>
             {% endif %}
             </ul>
@@ -31,16 +31,16 @@
             </div>
         </div>
         <div id='right_div'>
-            <a class='button' href="/home/projects/addFile?projId={{ project.id }}">+</a>
+            <a class='button' href="{% url 'sections.projects.views.addFile' %}?projId={{ project.id }}">+</a>
             <a class='flt_right' href=''>All Commits</a>
 
 
             <table id='proj_file_table'>
                 {% for p in project_files %}
                     <tr>
-                        <td class='proj_file_name'><a href='/home/projects/file_info?fileId={{ p.id }}'>{{ p.name }}</a></td>
+                        <td class='proj_file_name'><a href='{% url 'sections.projects.views.fileInfo' %}?fileId={{ p.id }}'>{{ p.name }}</a></td>
                         <td class='proj_file_download'><a href=''>Download</a></td>
-                        <td class='proj_file_upload'><a href='/home/projects/file_update?fileId={{ p.id }}'>Upload</a></td>
+                        <td class='proj_file_upload'><a href='{% url 'sections.projects.views.fileUpdate' %}?fileId={{ p.id }}'>Upload</a></td>
                         <td class='proj_file_version'>(.01)</td>
                     </tr>
                 {%  endfor %}

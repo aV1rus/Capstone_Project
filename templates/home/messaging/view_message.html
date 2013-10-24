@@ -8,7 +8,7 @@
 {% block user_content %}
     <a href="{% url "sections.messaging.views.messaging" %}" class="nav_link"> <-- Back</a>
 
-    <h3>From: <a href='/home/user_profile?userId={{ message.sender.id }}'>{{ message.sender.username }}</a></h3>
+    <h3>From: <a href='{% url 'sections.user_profile.views.userProfile' %}?userId={{ message.sender.id }}'>{{ message.sender.username }}</a></h3>
     <h3>On: {{ message.date_sent }}</h3>
     <h2> Content:</h2>
     <p class="message_content">

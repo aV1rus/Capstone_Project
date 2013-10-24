@@ -2,19 +2,19 @@
 <nav id="sidebar">
 	    <ul>
 
-            <li><a class='sidebar_item'href="/home/newsfeed">
+            <li><a class='sidebar_item'href="{% url "sections.newsfeed.views.newsfeed" %}">
                 <img class='sidebar_item_img' src="{% static "images/sidebar/rss_icon.png" %}" />
             </a></li>
 
-            <li><a class='sidebar_item'href="/home/forum">
+            <li><a class='sidebar_item'href="{% url "sections.forum.views.forum" %}">
                 <img class='sidebar_item_img' src="{% static "images/sidebar/forum.png" %}" />
             </a></li>
 
-            <li><a class='sidebar_item'href="/home/projects">
+            <li><a class='sidebar_item'href="{% url "sections.projects.views.projects" %}">
                 <img class='sidebar_item_img' src="{% static "images/sidebar/version.png" %}" />
             </a></li>
 
-            <li><a class='sidebar_item'href="/home/messaging">
+            <li><a class='sidebar_item'href="{% url "sections.messaging.views.messaging" %}">
                 <img class='sidebar_item_img' src="{% static "images/sidebar/messages.png" %}" />
 
             </a>
@@ -24,7 +24,7 @@
                 {% endif %}
             </li>
 
-            <li><a class='sidebar_item'href="/home/settings">
+            <li><a class='sidebar_item'href="{% url "sections.settings.views.settings" %}">
                 <img class='sidebar_item_img' src="{% static "images/sidebar/settings_icon.png" %}" />
             </a></li>
         </ul>

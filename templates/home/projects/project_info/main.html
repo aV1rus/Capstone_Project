@@ -2,7 +2,7 @@
 
 {% block user_content %}
 
-    <a href="/home/projects" class="nav_link"> < Back</a>
+    <a href="{% url 'sections.projects.views.projects' %}" class="nav_link"> < Back</a>
 
     <h1>{{ project.name }}</h1>
     {% include "home/projects/includes/proj_menu.html" %}

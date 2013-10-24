@@ -16,7 +16,7 @@
     </div>
     {% endcomment %}
     <div class ="proj_nav">
-        <a href='/home/forum' title='Return to Main Forum'>< Forum Home</a>
+        <a href='{% url 'sections.forum.views.forum' %}' title='Return to Main Forum'>< Forum Home</a>
     </div>
 
 
@@ -34,7 +34,7 @@
                     <td class='tc_holder_user_container'>
                         <img class='forum_user_pic' src="{{ MEDIA_URL }}{{ c.user.profile.picture }}" />
                         <br/>
-                        <a href='/home/user_profile?userId={{ c.user.id }}'>{{ c.user.username }}</a>
+                        <a href='{% url 'sections.user_profile.views.userProfile' %}?userId={{ c.user.id }}'>{{ c.user.username }}</a>
                     </td>
                     <td class='tc_holder_main'> <b>{{ c.title }}</b> <br/> {{ c.body }} </td>
                 </tr>
