@@ -6,6 +6,7 @@ from sections.newsfeed.models import NewsFeed
 from .models import *
 from .forms import *
 import Constants
+import operator
 
 
 @login_required(login_url="login.views.connect")
@@ -20,6 +21,8 @@ def forum(request):
         comments = Comments.objects.filter(thread_ref__in=threads).order_by('-created_at')
         if comments:
             c.last_post = comments[0].created_at
+
+    # category_list = sorted(category_list, key=operator.attrgetter('last_post'))
 
     return render(request, 'home/forum/forum.html', locals())
 

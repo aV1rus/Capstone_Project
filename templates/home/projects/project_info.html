@@ -39,7 +39,7 @@
                 {% for p in project_files %}
                     <tr>
                         <td class='proj_file_name'><a href='{% url 'sections.projects.views.fileInfo' %}?fileId={{ p.id }}'>{{ p.name }}</a></td>
-                        <td class='proj_file_download'><a href=''>Download</a></td>
+                        <td class='proj_file_download'><a href='{{ MEDIA_URL }}{{ p.newest_file.file_upload }}'>Download</a></td>
                         <td class='proj_file_upload'><a href='{% url 'sections.projects.views.fileUpdate' %}?fileId={{ p.id }}'>Upload</a></td>
                         <td class='proj_file_version'>(.01)</td>
                     </tr>

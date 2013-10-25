@@ -55,9 +55,10 @@ def projectInfo(request):
             project = Projects.objects.get(id=project_id)
             project_files = ProjectFile.objects.filter(project_ref=project_id)
             user_list = ProjectMembers.objects.filter(project=project)
-
-
-
+            for p in project_files:
+                files = FileUpdates.objects.filter(file_ref=p).order_by('-created_at')
+                if files:
+                    p.newest_file = files[0]
 
         # else:
         #     project_list = Projects.objects.all()
@@ -164,7 +165,7 @@ def invite(request):
                 check = ProjectMembers.objects.filter(user=user, project=project)
                 if check.count() is 0:
                     ProjectMembers(user=user, project=project).save()
-                    NewsFeed(user=request.user, title=Constants.NEWSFEED_PROJECT_INVITED.format(request.user, project.name), url='#').save()
+                    NewsFeed(user=request.user, title=Constants.NEWSFEED_PROJECT_INVITED.format(user, project.name), url='/home/user_profile/?userId='+str(user.id)).save()
                     message = user.username+' added'
                 else:
                     message = user.username+' is already a memeber of '+project.name

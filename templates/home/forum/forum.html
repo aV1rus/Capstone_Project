@@ -19,7 +19,7 @@
                 <td> Threads </td>
                 <td> Last Post </td>
             </tr>
-            {% for c in category_list %}
+            {% for c in category_list|dictsortreversed:'count' %}
                 <tr class='option'>
                     <td> <a href='{% url 'sections.forum.views.threads' %}?catId={{ c.id }}'>{{ c.name }}</a> </td>
                     <td> {{ c.acr }} </td>

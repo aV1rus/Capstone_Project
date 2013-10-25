@@ -1,7 +1,6 @@
 from django import forms
 
 
-
 class ConnectionForm(forms.Form):
     username = forms.CharField(max_length=30,widget=forms.TextInput(attrs={'placeholder':'Username'}), label="")
     password = forms.CharField(max_length=30, widget=forms.PasswordInput(attrs={'placeholder': 'Password'}), label="")
