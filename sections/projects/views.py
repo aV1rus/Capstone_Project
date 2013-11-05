@@ -11,14 +11,15 @@ def projects(request):
     owned_project_list = Projects.objects.filter(user=request.user)
     return render(request, 'home/projects/projects.html', locals())
 
+
 @login_required(login_url="login.views.connect")
 def allProjects(request):
+    project_list = Projects.objects.all()
+
     if request.method == 'GET':
         if request.GET:
             searchFilter = request.GET['searchFilter']
             project_list = Projects.objects.filter(name__contains=searchFilter)
-        else:
-            project_list = Projects.objects.all()
 
     return render(request, 'home/projects/all_projects.html', locals())
 
