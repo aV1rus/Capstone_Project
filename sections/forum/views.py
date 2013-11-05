@@ -6,7 +6,6 @@ from sections.newsfeed.models import NewsFeed
 from .models import *
 from .forms import *
 import Constants
-import operator
 
 
 @login_required(login_url="login.views.connect")
@@ -77,7 +76,7 @@ def thread_new(request):
             if thread:
                 thread.save()
                 Comments(user=request.user, title=title, body=body, thread_ref=thread).save()
-                PROJECT_URL = "/home/forum/threads/view?threadId="+str(thread.id)
+                PROJECT_URL = Constants.ROOT_URL(request.path)+"/home/forum/threads/view?threadId="+str(thread.id) #"sections.forum.views.thread_view?threadId="+str(thread.id)
                 NewsFeed(user=request.user, title=Constants.NEWSFEED_FORUM_THREAD_NEW.format(request.user, category.name, title), url=PROJECT_URL).save()
                 return redirect(PROJECT_URL)
 

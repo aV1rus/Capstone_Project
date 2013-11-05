@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class NewsFeed(models.Model):
     user = models.ForeignKey(User)                              #user which the update is referencing
     title = models.CharField(max_length=50)                     #title which the users friends will see
-    url = models.CharField(max_length=100)                                    #url that forwards to what it is referencing
+    url = models.CharField(max_length=100)                      #url that forwards to what it is referencing
     created_at = models.DateTimeField(auto_now_add=True)        #Created At
 
     def __unicode__(self):

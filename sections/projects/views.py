@@ -27,7 +27,7 @@ def addNew(request):
                 project.save()
                 project_id = project.id
                 #Add to newsfeed
-                Project_URL = "/home/projects/project_info?projId="+str(project_id)
+                Project_URL = Constants.ROOT_URL(request.path)+"/home/projects/project_info?projId="+str(project_id)
                 NewsFeed(user=request.user, title=Constants.NEWSFEED_PROJECT_CREATE.format(request.user, title), url=Project_URL).save()
                 return redirect(Project_URL)
 
@@ -87,7 +87,7 @@ def addFile(request):
                 file.save()
                 FileUpdates(file_ref=file, user=request.user, description='Initial Upload', file_upload=fileUpload).save()
                 # handle_uploaded_file(request.FILES['file'])
-                PROJECT_URL = "/home/projects/project_info?projId="+project_id
+                PROJECT_URL = Constants.ROOT_URL(request.path)+"/home/projects/project_info?projId="+project_id
                 NewsFeed(user=request.user, title=Constants.NEWSFEED_PROJECT_COMMIT.format(request.user, project.name), url=PROJECT_URL).save()
                 return redirect(PROJECT_URL)
 
@@ -120,7 +120,7 @@ def fileUpdate(request):
                 #TODO :: HANDLE UPLOAD OF FILE
                 file_update.save()
                 # handle_uploaded_file(request.FILES['file'])
-                PROJECT_URL = "/home/projects/file_info?fileId="+file_id
+                PROJECT_URL = Constants.ROOT_URL(request.path)+"/home/projects/file_info?fileId="+file_id
                 # NewsFeed(user=request.user, title=Constants.NEWSFEED_PROJECT_COMMIT.format(request.user, project.name), url=PROJECT_URL).save()
                 return redirect(PROJECT_URL)
 
