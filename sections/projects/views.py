@@ -7,9 +7,20 @@ from sections.newsfeed.models import NewsFeed
 
 @login_required(login_url="login.views.connect")
 def projects(request):
-    # projects = ProjectMembers.objects.filter(user=request.user)
-    project_list = Projects.objects.all()
+    contrib_projects = ProjectMembers.objects.filter(user=request.user)
+    owned_project_list = Projects.objects.filter(user=request.user)
     return render(request, 'home/projects/projects.html', locals())
+
+@login_required(login_url="login.views.connect")
+def allProjects(request):
+    if request.method == 'GET':
+        if request.GET:
+            searchFilter = request.GET['searchFilter']
+            project_list = Projects.objects.filter(name__contains=searchFilter)
+        else:
+            project_list = Projects.objects.all()
+
+    return render(request, 'home/projects/all_projects.html', locals())
 
 
 @login_required(login_url="login.views.connect")
@@ -55,13 +66,21 @@ def projectInfo(request):
             project = Projects.objects.get(id=project_id)
             project_files = ProjectFile.objects.filter(project_ref=project_id)
             user_list = ProjectMembers.objects.filter(project=project)
+
+            if request.user == project.user:
+                is_owner = True
+                is_member = True
+
+            if user_list.count() > 0:
+                for u in user_list:
+                    if request.user == u.user:
+                        is_member = True
+
             for p in project_files:
                 files = FileUpdates.objects.filter(file_ref=p).order_by('-created_at')
                 if files:
                     p.newest_file = files[0]
 
-        # else:
-        #     project_list = Projects.objects.all()
     return render(request, 'home/projects/project_info.html', locals())
 
 
@@ -162,13 +181,16 @@ def invite(request):
 
             if user_id != "":
                 user = User.objects.get(id=user_id)
-                check = ProjectMembers.objects.filter(user=user, project=project)
-                if check.count() is 0:
-                    ProjectMembers(user=user, project=project).save()
-                    NewsFeed(user=request.user, title=Constants.NEWSFEED_PROJECT_INVITED.format(user, project.name), url='/home/user_profile/?userId='+str(user.id)).save()
-                    message = user.username+' added'
+                if user != project.user:
+                    check = ProjectMembers.objects.filter(user=user, project=project)
+                    if check.count() is 0:
+                        ProjectMembers(user=user, project=project).save()
+                        NewsFeed(user=request.user, title=Constants.NEWSFEED_PROJECT_INVITED.format(user, project.name), url='/home/user_profile/?userId='+str(user.id)).save()
+                        message = user.username+' added'
+                    else:
+                        message = user.username+' is already a memeber of '+project.name
                 else:
-                    message = user.username+' is already a memeber of '+project.name
+                    message = user.username+' is the owner of '+project.name+"! Ofcourse he is a member"
 
     return render(request, 'home/projects/invite.html', locals())
 

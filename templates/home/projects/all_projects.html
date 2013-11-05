@@ -1,0 +1,45 @@
+{% extends "base/base_home.html" %}
+{% load static %}
+
+{% block extra_head_content %}
+    <link rel = 'stylesheet' href="{% static "css/sections/projects/projects.css" %}" />
+{% endblock %}
+
+{% block user_content %}
+    <h1>All Projects</h1>
+    <a class='nav_link' href='{% url 'sections.projects.views.addNew' %}'>Create New Project</a>
+    <a class='nav_link' href='{% url 'sections.projects.views.allProjects' %}'>View All Projects</a>
+
+    <section class="main_with_right_menu">
+
+     <form name="search" class="form-search" method="get" action="#">
+        <input name="searchFilter" type="text" class="search-query input-large" {#onkeypress="return submitenter(this,event)" #} value='{{ searchFilter }}'>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+        <table class='padd_table'>
+            <tr class='header'>
+                <td> Name </td>
+                <td> Description </td>
+                <td> Date Created </td>
+            </tr>
+            {% if project_list.count > 0 %}
+                {% for p in project_list %}
+                    <tr class='option'>
+                        <td class='projects_title_row'> <a href="{% url 'sections.projects.views.projectInfo' %}?projId={{ p.id }}">{{ p.name }}</a> </td>
+                        <td class='projects_desc_row'> {{ p.description|truncatechars:160|linebreaks }} </td>
+                        <td class='projects_date_row'> {{ p.created_at }} </td>
+                    </tr>
+                {%  endfor %}
+
+            {% endif %}
+            {% if project_list.count == 0 %}
+                <tr class=''>
+                    <td colspan="3"> Oops No projects found </td>
+                </tr>
+            {% endif %}
+        </table>
+
+    </section>
+
+{% endblock %}

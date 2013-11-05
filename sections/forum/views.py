@@ -108,7 +108,8 @@ def thread_view(request):
         form = CreateThreadForm()
 
     comment_list = Comments.objects.filter(thread_ref=thread)
+    for c in comment_list:
+        c.body = c.body.replace('[IMG]', Constants.IMAGE_URL_BEGIN).replace('[/IMG]', Constants.IMAGE_URL_END)
+        c.body = c.body.replace('[U2]', Constants.VIDEO_URL_BEGIN).replace('[/U2]', Constants.VIDEO_URL_END)
 
-    # for c in comment_list:
-    #     c.user.profile
     return render(request, 'home/forum/threads_view.html', locals())

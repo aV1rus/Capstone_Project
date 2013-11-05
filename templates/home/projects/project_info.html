@@ -15,33 +15,45 @@
         <div id='left_div'>
             <img id='proj_img' src="{{ MEDIA_URL }}{{ project.user.profile.picture }}" />
             <ul id='proj_contr'>
+                    <li>{{ project.user.username }}</li>
                 {% for u in user_list %}
                     <li>{{ u.user.username }}</li>
                 {% endfor %}
-            {%  if request.user == project.user %}
-                <li><br/>
-                    <a href='{% url 'sections.projects.views.invite' %}?projId={{ project.id }}&userId=&searchFilter='>Invite More</a>
-                </li>
-            {% endif %}
+                {%  if is_member %}
+                    <li><br/>
+                        <a href='{% url 'sections.projects.views.invite' %}?projId={{ project.id }}&userId=&searchFilter='>Invite Users</a>
+                    </li>
+                {% endif %}
             </ul>
 
             <div id='left_div_lower'>
                 <h4>Description</h4>
-                <span id='proj_desc'>{{ project.description }}</span>
+                <span id='proj_desc'>{{ project.description|linebreaks }}</span>
             </div>
         </div>
         <div id='right_div'>
-            <a class='button' href="{% url 'sections.projects.views.addFile' %}?projId={{ project.id }}">+</a>
+            {% if is_member %}
+                <a class='button' href="{% url 'sections.projects.views.addFile' %}?projId={{ project.id }}">+</a>
+            {% endif %}
             <a class='flt_right' href=''>All Commits</a>
 
 
             <table id='proj_file_table'>
                 {% for p in project_files %}
                     <tr>
-                        <td class='proj_file_name'><a href='{% url 'sections.projects.views.fileInfo' %}?fileId={{ p.id }}'>{{ p.name }}</a></td>
-                        <td class='proj_file_download'><a href='{{ MEDIA_URL }}{{ p.newest_file.file_upload }}'>Download</a></td>
-                        <td class='proj_file_upload'><a href='{% url 'sections.projects.views.fileUpdate' %}?fileId={{ p.id }}'>Upload</a></td>
-                        <td class='proj_file_version'>(.01)</td>
+                        {% if is_member %}
+                            <td class='proj_file_name'><a href='{% url 'sections.projects.views.fileInfo' %}?fileId={{ p.id }}'>{{ p.name }}</a></td>
+                            <td class='proj_file_download'><a href='{{ MEDIA_URL }}{{ p.newest_file.file_upload }}'>Download</a></td>
+                            <td class='proj_file_upload'><a href='{% url 'sections.projects.views.fileUpdate' %}?fileId={{ p.id }}'>Upload</a></td>
+                            <td class='proj_file_version'>(.01)</td>
+                        {% endif %}
+
+                        {% if not is_member %}
+                            <td class='proj_file_name'>{{ p.name }}</td>
+                            <td class='proj_file_download'><a href='{{ MEDIA_URL }}{{ p.newest_file.file_upload }}'>Download</a></td>
+                            <td class='proj_file_upload'>Upload</td>
+                            <td class='proj_file_version'>(.01)</td>
+                        {% endif %}
                     </tr>
                 {%  endfor %}
             </table>

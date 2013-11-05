@@ -66,5 +66,3 @@ def register(request):
     else:
         form = RegistrationForm()
     return render(request, "login/register.html", locals())
-
-

@@ -17,7 +17,7 @@
             {% for p in project_updates %}
                 <tr class='row'>
                     <td>{{ p.created_at }}<br/>Contributor: <b>{{ p.user.username }}</b></td>
-                    <td>{{ p.description }}</td>
+                    <td>{{ p.description|linebreaks }}</td>
                     <td><a href='#'>Link</a></td>
                 </tr>
             {%  endfor %}

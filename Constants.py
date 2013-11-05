@@ -9,8 +9,11 @@ NEWSFEED_FORUM_THREAD_NEW = "{0} created a new thread in {1}: {2}"
 
 NEWSFEED_PROJECT_INVITED = "{0} join project {1}"
 
-# ROOT_URL = ''
-# ROOT_URL = 'av1rus.dyndns.org/capstone'
+IMAGE_URL_BEGIN = "<img class='thread_view_user_link_img' src='"
+IMAGE_URL_END = "' />"
+
+VIDEO_URL_BEGIN = "<embed src='http://www.youtube.com/v/"
+VIDEO_URL_END = "' type='application/x-shockwave-flash' wmode='transparent' width='380' height='280'></embed>"
 
 
 def ROOT_URL(path):

@@ -30,25 +30,34 @@
             </td><td>
                 Contributions
             </td></tr>
-            {% for u in users %}
-                {#            {% if u.isActive %}#}
+            {% if users.count > 0 %}
+                {% for u in users %}
+                    {#            {% if u.isActive %}#}
 
-                <tr class='option'><td>
-                    {{ u.id }}
-                </td><td>
-                    <a href='{% url 'sections.user_profile.views.userProfile' %}?userId={{ u.id }}'>{{ u.username }}</a>
-                </td><td>
-                    {{ u.email }}
-                </td><td>
-                    {{ u.date_joined }}
-                </td><td>
-                    0
-                </td><td>
-                    0
-                </td></tr>
+                    <tr class='option'>
+                        <td>
+                            {{ u.id }}
+                        </td><td>
+                        <a href='{% url 'sections.user_profile.views.userProfile' %}?userId={{ u.id }}'>{{ u.username }}</a>
+                    </td><td>
+                        {{ u.email }}
+                    </td><td>
+                        {{ u.date_joined }}
+                    </td><td>
+                        0
+                    </td><td>
+                        0
+                    </td>
+                    </tr>
 
-                {#            {% endif %}#}
-            {% endfor %}
+                    {#            {% endif %}#}
+                {% endfor %}
+            {% endif %}
+            {% if users.count == 0 %}
+                <tr class=''>
+                    <td colspan="6"> Oops No Users found </td>
+                </tr>
+            {% endif %}
         </table>
 
     </section>

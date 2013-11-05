@@ -6,32 +6,47 @@
 {% endblock %}
 
 {% block user_content %}
-    <h1>Projects</h1>
-    {% comment %}
-        <div id='right_main'>
-            <ul id="nav-right">
-                <li><a class='large_main_btn' href='add_new'>Create New Project</a></li>
-            </ul>
-        </div>
-        {% endcomment %}
     <a class='nav_link' href='{% url 'sections.projects.views.addNew' %}'>Create New Project</a>
+    <a class='nav_link' href='{% url 'sections.projects.views.allProjects' %}'>View All Projects</a>
 
     <section class="main_with_right_menu">
-        <table class='padd_table'>
-            <tr class='header'>
-                <td> Name </td>
-                <td> Description </td>
-                <td> Date Created </td>
-            </tr>
-            {% for p in project_list %}
-                <tr class='option'>
-                    <td class='projects_title_row'> <a href="{% url 'sections.projects.views.projectInfo' %}?projId={{ p.id }}">{{ p.name }}</a> </td>
-                    <td class='projects_desc_row'> {{ p.description|truncatechars:160 }} </td>
-                    <td class='projects_date_row'> {{ p.created_at }} </td>
+        {% if owned_project_list.count > 0 %}
+            <h1>Projects You Own</h1>
+            <table class='padd_table'>
+                <tr class='header'>
+                    <td> Name </td>
+                    <td> Description </td>
+                    <td> Date Created </td>
                 </tr>
-            {%  endfor %}
+                {% for p in owned_project_list %}
+                    <tr class='option'>
+                        <td class='projects_title_row'> <a href="{% url 'sections.projects.views.projectInfo' %}?projId={{ p.id }}">{{ p.name }}</a> </td>
+                        <td class='projects_desc_row'> {{ p.description|truncatechars:160|linebreaks }} </td>
+                        <td class='projects_date_row'> {{ p.created_at }} </td>
+                    </tr>
+                {%  endfor %}
 
-        </table>
+            </table>
+        {% endif %}
+
+    {% if contrib_projects.count > 0 %}<br/>
+            <h1>Projects You Contribute To</h1>
+            <table class='padd_table'>
+                <tr class='header'>
+                    <td> Name </td>
+                    <td> Description </td>
+                    <td> Date Created </td>
+                </tr>
+                {% for p in contrib_projects %}
+                    <tr class='option'>
+                        <td class='projects_title_row'> <a href="{% url 'sections.projects.views.projectInfo' %}?projId={{ p.project.id }}">{{ p.project.name }}</a> </td>
+                        <td class='projects_desc_row'> {{ p.project.description|truncatechars:160|linebreaks }} </td>
+                        <td class='projects_date_row'> {{ p.project.created_at }} </td>
+                    </tr>
+                {%  endfor %}
+
+            </table>
+        {% endif %}
 
     </section>
 

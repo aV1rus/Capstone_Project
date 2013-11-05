@@ -6,6 +6,9 @@
     <a href='{% url 'sections.forum.views.forum' %}'>< Back</a>
 
     <form action="" method="POST">
+    <h4>TIPS:</h4>
+    <h4>Use [IMG] and [/IMG] to add an image link to your thread</h4>
+    <h4>Use [U2] and [/U2] to add youtube video</h4>
         <table>
             {% csrf_token %}
             {{ form.as_table }}

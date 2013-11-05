@@ -25,10 +25,10 @@
         <table>
             {% for c in comment_list %}
                 <tr class='tc_head'>
-                        <td colspan="2" >
-                            <span class='tc_head_date'>{{ c.created_at }}</span>
-                            <span class='tc_head_count'>{{forloop.counter}}</span>
-                        </td>
+                    <td colspan="2" >
+                        <span class='tc_head_date'>{{ c.created_at }}</span>
+                        <span class='tc_head_count'>{{forloop.counter}}</span>
+                    </td>
                 </tr>
                 <tr class='tc_holder'>
                     <td class='tc_holder_user_container'>
@@ -36,18 +36,16 @@
                         <br/>
                         <a href='{% url 'sections.user_profile.views.userProfile' %}?userId={{ c.user.id }}'>{{ c.user.username }}</a>
                     </td>
-                    <td class='tc_holder_main'> <b>{{ c.title }}</b> <br/> {{ c.body }} </td>
+                    <td class='tc_holder_main'> <b>{{ c.title }}</b> <br/>
+                        {% autoescape off %}
+                            {{ c.body|linebreaks }}
+                        {% endautoescape %}
+
+                    </td>
                 </tr>
                 <tr class='tc_spacer'></tr>
             {% endfor %}
         </table>
-
-
-
-
-
-
-
 
 
         <form id='forum_thread_comment' action="" method="POST">

@@ -10,7 +10,7 @@
     <a href="{% url 'sections.projects.views.fileUpdate' %}?fileId={{ file.id }}" class="nav_link"> Upload </a>
 
     <h1>{{ file.name }}</h1>
-    {{ file.description }}<br/><br/>
+    {{ file.description|linebreaks }}<br/><br/>
     <section>
         <table id='file_commit_table' class='padd_table'>
             <tr class='header'>
@@ -23,7 +23,7 @@
                 <tr class='row'>
                     <td class='file_col1'>{{ forloop.counter }}</td>
                     <td class='file_col2'>{{ f.created_at }}<br/>Contributor: <b>{{ f.user.username }}</b></td>
-                    <td class='file_col3'>{{ f.description }}</td>
+                    <td class='file_col3'>{{ f.description|linebreaks }}</td>
                     <td class='file_col4'><a href='{{ MEDIA_URL }}{{ f.file_upload }}'>Link</a></td>
                 </tr>
             {%  endfor %}
