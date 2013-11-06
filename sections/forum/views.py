@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from home.models import Major
 from sections.newsfeed.models import NewsFeed
+from sections.projects.models import ProjectMembers
 from .models import *
 from .forms import *
 import Constants
@@ -88,6 +89,61 @@ def thread_new(request):
 
     return render(request, "home/forum/threads_new.html", locals())
 
+@login_required(login_url="login.views.connect")
+def editComment(request):
+    if request.method == 'GET':
+        if request.GET:
+            comment_id = request.GET['commentid']
+            # cnt = request.GET['cnt']
+            comment = Comments.objects.get(id=comment_id)
+            form = CreateThreadForm(initial={'title': comment.title, 'body': comment.body})
+
+    if request.method == "POST":
+        form = CreateThreadForm(request.POST)
+        if form.is_valid():
+            comment_id = request.POST['commentid']
+            comment = Comments.objects.get(id=comment_id)
+            title = form.cleaned_data['title']
+            body = form.cleaned_data['body']
+            if title != '':
+                comment.title = title
+            if body != '':
+                comment.body = body
+            comment.save()
+            thread_id = comment.thread_ref_id
+            PROJECT_URL = Constants.ROOT_URL(request.path)+"/home/forum/threads/view?threadId="+str(thread_id) #"sections.forum.views.thread_view?threadId="+str(thread.id)
+            return redirect(PROJECT_URL)
+        else:
+            message = 'Fields incomplete.'
+            error = True
+
+    return render(request, 'home/forum/threads_new.html', locals())
+
+@login_required(login_url="login.views.connect")
+def linkProject(request):
+    if request.method == 'GET':
+        if request.GET:
+            thread_id = request.GET['threadId']
+            thread = Thread.objects.get(id=thread_id)
+
+            if 'proj_ref' in request.GET:
+                project = Projects.objects.get(id=request.GET['proj_ref'])
+                if ProjectForum.objects.filter(project=project, thread=thread):
+                    Error = True
+                    message = 'That Project is already part of this Thread'
+                else:
+                    ProjectForum(project=project, thread=thread).save()
+
+            if 'del_proj_ref' in request.GET:
+                project = Projects.objects.get(id=request.GET['del_proj_ref'])
+                ProjectForum.objects.get(project=project, thread=thread).delete()
+
+        linked_projects = ProjectForum.objects.filter(thread=thread)
+        project_list = Projects.objects.filter(user=request.user)
+        project_member_list = ProjectMembers.objects.filter(user=request.user)
+
+    return render(request, 'home/forum/link_project.html', locals())
+
 
 @login_required(login_url="login.views.connect")
 def thread_view(request):
@@ -107,6 +163,7 @@ def thread_view(request):
     else:
         form = CreateThreadForm()
 
+    linked_projects = ProjectForum.objects.filter(thread=thread)
     comment_list = Comments.objects.filter(thread_ref=thread)
     for c in comment_list:
         c.body = c.body.replace('[IMG]', Constants.IMAGE_URL_BEGIN).replace('[/IMG]', Constants.IMAGE_URL_END)

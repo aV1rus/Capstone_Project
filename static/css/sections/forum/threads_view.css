@@ -24,14 +24,18 @@ table
     padding-left: 10px;
     padding-right: 10px;
 }
+
 .tc_head_count{
     float:right;
 }
+
 .tc_head span{
     color: white;
 }
+
 .tc_holder{
 }
+
 .tc_holder_user_container
 {
     width: 12%;
@@ -46,6 +50,10 @@ table
     background-color: white;
     min-height: 200px;
     width:70%;
+}
+.td_holder_btn_edit
+{
+    float: right;
 }
 .tc_spacer
 {

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from sections.projects.models import Projects
 from home.models import Major
 
 
@@ -21,3 +22,11 @@ class Comments(models.Model):
 
     def __unicode__(self):
         return " {0} {1} {2}".format(self.user, self.title, self.body)
+
+
+class ProjectForum(models.Model):
+    project = models.ForeignKey(Projects)                  #project referencing
+    thread = models.ForeignKey(Thread)                         #User referencing
+
+    def __unicode__(self):
+        return " {0} {1}".format(self.forum, self.project)

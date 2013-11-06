@@ -1,0 +1,40 @@
+{% extends "base/base_home.html" %}
+{%  load static %}
+
+{% block user_content %}
+    <section class='main_with_right_menu'>
+
+        <form action="" method="GET">
+        <input type="hidden" value="{{ thread_id }}" name='threadId'/>
+            <select name='proj_ref'>
+                <option value="None" selected="selected">Link a Project (Optional)</option>
+                {% if project_list %}
+                    {% for p in project_list %}
+                        <option value="{{ p.id }}">{{ p.name }}</option>
+                    {% endfor %}
+                {% endif %}
+                {% if project_member_list %}
+                    {% for p in project_member_list %}
+                        <option value="{{ p.project.id }}">{{ p.project.name }}</option>
+                    {% endfor %}
+                {% endif %}
+            </select>
+
+            <input type="submit" value="Add">
+        </form>
+    <br/>
+    <span >{{ message }}</span>
+<hr/>
+    {% if linked_projects.count > 0 %}
+        <h1>Linked Projects</h1>
+        <table>
+           {% for lp in linked_projects %}
+                <tr>
+                <td>{{ lp.project.name }}</td>
+                <td><a href='?threadId={{ thread_id }}&del_proj_ref={{ lp.project.id }}'>Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    </section>
+{% endblock %}

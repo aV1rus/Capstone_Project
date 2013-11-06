@@ -1,0 +1,20 @@
+#hints
+{
+    margin: 3em;
+    border: black solid 1px;
+}
+#100form
+{
+    width:100%;
+    border: black solid 1px;
+}
+
+#100form_table
+{
+    width: 80%;
+}
+
+#id_body
+{
+    width: 700px;
+}
