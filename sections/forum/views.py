@@ -81,8 +81,11 @@ def thread_new(request):
             if thread:
                 thread.save()
                 Comments(user=request.user, title=title, body=body, thread_ref=thread).save()
+                #TODO : Remove PROJECT_URL
                 PROJECT_URL = Constants.ROOT_URL(request.path)+"/home/forum/threads/view?threadId="+str(thread.id) #"sections.forum.views.thread_view?threadId="+str(thread.id)
-                NewsFeed(user=request.user, title=Constants.NEWSFEED_FORUM_THREAD_NEW.format(request.user, category.name, title), url=PROJECT_URL).save()
+                PROJECT_VIEW = 'sections.forum.views.thread_view'
+                PROJECT_PARAMS = "?threadId="+str(thread.id)
+                NewsFeed(user=request.user, title=Constants.NEWSFEED_FORUM_THREAD_NEW.format(request.user, category.name, title), view=PROJECT_VIEW, params=PROJECT_PARAMS).save()
                 return redirect(PROJECT_URL)
 
         else:

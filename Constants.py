@@ -2,7 +2,8 @@ import capstone.dev_settings
 
 #NEWS FEED STRINGS
 NEWSFEED_PROJECT_CREATE = "{0} just created a new project named {1}"
-NEWSFEED_PROJECT_COMMIT = "{0} just commited a change to {1}"
+NEWSFEED_PROJECT_NEWFILE = "{0} just added a new file to {1} called {2}"
+NEWSFEED_PROJECT_COMMIT = "{0} just commited a change to project {1}"
 NEWSFEED_FORUM_THREAD_NEW = "{0} created a new thread in {1}: {2}"
 
 

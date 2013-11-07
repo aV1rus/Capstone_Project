@@ -26,7 +26,7 @@
             {% for n in newsfeed_list %}
                 <tr class='option'>
                     <td> {{ n.created_at }}</td>
-                    <td> <a href='{{ n.url }}'>{{ n.title }}</a> </td>
+                    <td> <a href='{% url n.view %}{{ n.params }}'>{{ n.title }}</a> </td>
                 </tr>
             {% endfor %}
 

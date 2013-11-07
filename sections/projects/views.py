@@ -36,20 +36,14 @@ def addNew(request):
             description = form.cleaned_data['description']
             project = Projects(user=request.user, name=title, description=description)
             if project:
-                #TODO :: HANDLE UPLOAD OF FILE
                 project.save()
                 project_id = project.id
                 #Add to newsfeed
                 Project_URL = Constants.ROOT_URL(request.path)+"/home/projects/project_info?projId="+str(project_id)
-                NewsFeed(user=request.user, title=Constants.NEWSFEED_PROJECT_CREATE.format(request.user, title), url=Project_URL).save()
+                PROJECT_VIEW = 'sections.projects.views.projectInfo'
+                PROJECT_PARAMS = "?projId="+str(project_id)
+                NewsFeed(user=request.user, title=Constants.NEWSFEED_PROJECT_CREATE.format(request.user, title), view=PROJECT_VIEW, params=PROJECT_PARAMS).save()
                 return redirect(Project_URL)
-
-                # if project:
-                #     uploadFile(request.FILES['file'], 'Initial Upload')
-                #     message = 'Completed'
-                # else:
-                #     error = True
-                #     message = 'OOPS. Error'
 
         else:
             message = 'Fields incomplete.'
@@ -114,7 +108,9 @@ def addFile(request):
                 FileUpdates(file_ref=file, user=request.user, description='Initial Upload', file_upload=fileUpload).save()
                 # handle_uploaded_file(request.FILES['file'])
                 PROJECT_URL = Constants.ROOT_URL(request.path)+"/home/projects/project_info?projId="+project_id
-                NewsFeed(user=request.user, title=Constants.NEWSFEED_PROJECT_COMMIT.format(request.user, project.name), url=PROJECT_URL).save()
+                PROJECT_VIEW = 'sections.projects.views.projectInfo'
+                PROJECT_PARAMS = "?projId="+project_id
+                NewsFeed(user=request.user, title=Constants.NEWSFEED_PROJECT_NEWFILE.format(request.user, project.name, file.name), view=PROJECT_VIEW, params=PROJECT_PARAMS).save()
                 return redirect(PROJECT_URL)
 
         else:
@@ -145,9 +141,10 @@ def fileUpdate(request):
             if file_update:
                 #TODO :: HANDLE UPLOAD OF FILE
                 file_update.save()
-                # handle_uploaded_file(request.FILES['file'])
                 PROJECT_URL = Constants.ROOT_URL(request.path)+"/home/projects/file_info?fileId="+file_id
-                # NewsFeed(user=request.user, title=Constants.NEWSFEED_PROJECT_COMMIT.format(request.user, project.name), url=PROJECT_URL).save()
+                PROJECT_VIEW = 'sections.projects.views.fileInfo'
+                PROJECT_PARAMS = "?fileId="+file_id
+                NewsFeed(user=request.user, title=Constants.NEWSFEED_PROJECT_COMMIT.format(request.user, file.project_ref.name), view=PROJECT_VIEW, params=PROJECT_PARAMS).save()
                 return redirect(PROJECT_URL)
 
         else:
@@ -192,7 +189,10 @@ def invite(request):
                     check = ProjectMembers.objects.filter(user=user, project=project)
                     if check.count() is 0:
                         ProjectMembers(user=user, project=project).save()
-                        NewsFeed(user=request.user, title=Constants.NEWSFEED_PROJECT_INVITED.format(user, project.name), url='/home/user_profile/?userId='+str(user.id)).save()
+                        PROJECT_URL = Constants.ROOT_URL(request.path)+'/home/user_profile/?userId='+str(user.id)
+                        PROJECT_VIEW = 'sections.user_profile.views.userProfile'
+                        PROJECT_PARAMS = "?userId="+str(user.id)
+                        NewsFeed(user=request.user, title=Constants.NEWSFEED_PROJECT_INVITED.format(user, project.name), view=PROJECT_VIEW, params=PROJECT_PARAMS).save()
                         message = user.username+' added'
                     else:
                         message = user.username+' is already a memeber of '+project.name
