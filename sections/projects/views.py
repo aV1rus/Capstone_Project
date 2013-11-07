@@ -20,7 +20,7 @@ def allProjects(request):
     if request.method == 'GET':
         if request.GET:
             searchFilter = request.GET['searchFilter']
-            project_list = Projects.objects.filter(name__contains=searchFilter)
+            project_list = Projects.objects.filter(name__icontains=searchFilter)
 
     return render(request, 'home/projects/all_projects.html', locals())
 
@@ -184,7 +184,7 @@ def invite(request):
             user_id = request.GET['userId']
 
             if searchFilter != "":
-                users = User.objects.filter(username__contains=searchFilter) | User.objects.filter(email__contains=searchFilter) | User.objects.filter(first_name__contains=searchFilter)
+                users = User.objects.filter(username__icontains=searchFilter) | User.objects.filter(email__icontains=searchFilter) | User.objects.filter(first_name__icontains=searchFilter)
 
             if user_id != "":
                 user = User.objects.get(id=user_id)

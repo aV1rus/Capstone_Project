@@ -33,7 +33,7 @@ def findUsers(request):
     if request.method == 'GET':
         if request.GET:
             searchFilter = request.GET['searchFilter']
-            users = User.objects.filter(username__contains=searchFilter) | User.objects.filter(email__contains=searchFilter) | User.objects.filter(first_name__contains=searchFilter)
+            users = User.objects.filter(username__icontains=searchFilter) | User.objects.filter(email__icontains=searchFilter) | User.objects.filter(first_name__icontains=searchFilter)
         else:
             users = User.objects.all()
     else:
