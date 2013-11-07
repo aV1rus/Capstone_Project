@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import *
 from sections.projects.models import *
+from sections.forum.models import ProjectForum, Comments
 from sections.newsfeed.models import NewsFeed
 
 @login_required(login_url="login.views.connect")
@@ -81,6 +82,11 @@ def projectInfo(request):
                 files = FileUpdates.objects.filter(file_ref=p).order_by('-created_at')
                 if files:
                     p.newest_file = files[0]
+
+        linked_projects = ProjectForum.objects.filter(project=project)
+        for lp in linked_projects:
+            comment_list = Comments.objects.filter(thread_ref=lp.thread).order_by("-created_at")[:1]
+            lp.thread.title = comment_list[0].title
 
     return render(request, 'home/projects/project_info.html', locals())
 
