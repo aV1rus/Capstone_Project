@@ -199,6 +199,10 @@ def invite(request):
                 else:
                     message = user.username+' is the owner of '+project.name+"! Ofcourse he is a member"
 
+    for u in users:
+        u.proj_created = Projects.objects.filter(user=u).count()
+        u.contributions = FileUpdates.objects.filter(user=u).count()
+
     return render(request, 'home/projects/invite.html', locals())
 
 

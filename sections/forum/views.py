@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from home.models import Major
 from sections.newsfeed.models import NewsFeed
-from sections.projects.models import ProjectMembers
+from sections.projects.models import *
 from .models import *
 from .forms import *
 import Constants
@@ -38,6 +38,10 @@ def findUsers(request):
             users = User.objects.all()
     else:
         users = User.objects.all()
+
+    for u in users:
+        u.proj_created = Projects.objects.filter(user=u).count()
+        u.contributions = FileUpdates.objects.filter(user=u).count()
 
     return render(request, 'home/forum/users.html', locals())
 
