@@ -1,12 +1,56 @@
 {% extends "base/base_home.html" %}
 {%  load static %}
 
+{% block extra_head_content %}
+    <link rel = 'stylesheet' href="{% static "css/sections/profile/profile.css" %}" />
+{% endblock %}
+
 {% block user_content %}
 
-    <img id='profile_main_pic' src="{{ MEDIA_URL }}{{ user_profile.picture }}"/>
-    {{ user.username }}<br/>
-    {{ user.first_name }}
-    {{ user.last_name }} <br/>
-    {{ user_profile.major }}
-    {{ user_profile.headline }}
+    <div id='top'>
+        <img id='profile_main_pic' src="{{ MEDIA_URL }}{{ user_profile.picture }}"/>
+        <div id='user_info'>
+
+            <b>{{ user.username }}</b><br/>
+            {{ user.first_name }} {{ user.last_name }} <br/>
+            {{ user_profile.major }} <br/><br/>
+            {{ user_profile.headline }}
+        </div>
+
+    </div>
+    <div id='table_divs'>
+
+        {% if projects.count > 0 %}
+            <h1>Created Projects</h1>
+            <table class='padd_table'>
+                {% for p in projects %}
+                    <tr class='option'>
+                        <td class='projects_title_row'> <a href="{% url 'sections.projects.views.projectInfo' %}?projId={{ p.id }}">{{ p.name }}</a> </td>
+                        <td class='projects_desc_row'> {{ p.description|truncatechars:160|linebreaks }} </td>
+                        <td class='projects_date_row'> {{ p.created_at }} </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+        <br/>
+        {% if threads.count > 0 %}
+            <h1>Threads Started</h1>
+            <table class='padd_table'>
+                {% for t in threads %}
+                    <tr class='tbl_row option'>
+                        <td class='forum_threads_title'>
+                            <a href='{% url 'sections.forum.views.thread_view' %}?threadId={{ t.id }}'>{{ t.title }}</a></a> <br/>
+                            <span class='username_sml'>{{ t.user.username }}</span>
+                        </td>
+                        <td class='forum_threads_count'>{{ t.count }}</td>
+                        <td class='forum_threads_date'>
+                            {{ t.last_post.created_at }}<br/>
+                            <span class='username_sml'>{{ t.last_post.user.username }}</span>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+
 {% endblock %}

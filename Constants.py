@@ -5,10 +5,10 @@ NEWSFEED_PROJECT_CREATE = "{0} just created a new project named {1}"
 NEWSFEED_PROJECT_NEWFILE = "{0} just added a new file to {1} called {2}"
 NEWSFEED_PROJECT_COMMIT = "{0} just commited a change to project {1}"
 NEWSFEED_FORUM_THREAD_NEW = "{0} created a new thread in {1}: {2}"
+NEWSFEED_PROJECT_EDIT = "{0} made changes to project {1}"
 
 
-
-NEWSFEED_PROJECT_INVITED = "{0} join project {1}"
+NEWSFEED_PROJECT_INVITED = "{0} joined project {1}"
 
 IMAGE_URL_BEGIN = "<img class='thread_view_user_link_img' src='"
 IMAGE_URL_END = "' />"

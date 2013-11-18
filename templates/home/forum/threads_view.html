@@ -37,26 +37,38 @@
                         <a href='{% url 'sections.user_profile.views.userProfile' %}?userId={{ c.user.id }}'>{{ c.user.username }}</a>
                     </td>
                     <td class='tc_holder_main'>
-                        <a class='td_holder_btn_edit' href='{% url 'sections.forum.views.editComment' %}?commentid={{ c.id }}&cnt={{forloop.counter}}'>Edit</a>
+
+                        {% if c.user.id == request.user.id %}
+
+                            <a class='td_holder_btn_edit' href='{% url 'sections.forum.views.editComment' %}?commentid={{ c.id }}&cnt={{forloop.counter}}'>Edit</a>
+                        {% endif %}
+
                         <b>{{ c.title }}</b> <br/>
                         {% autoescape off %}
                             {{ c.body|linebreaks }}
                         {% endautoescape %}
+
                         {% if forloop.counter < 2 %}
-                            <hr />
-                            {% if linked_projects.count > 0 %}
-                                <a href='{% url 'sections.forum.views.linkProject' %}?threadId={{ thread_id }}'>Edit Link Project</a>
+
+                            {% if c.user.id == request.user.id %}
+                                {% if linked_projects.count > 0 %}
+                                    <a href='{% url 'sections.forum.views.linkProject' %}?threadId={{ thread_id }}'>Edit Link Project</a>
+                                {% endif %}
+                                {% if linked_projects.count == 0 %}
+                                    <a href='{% url 'sections.forum.views.linkProject' %}?threadId={{ thread_id }}'>Link Project</a>
+                                {% endif %}
                             {% endif %}
-                            {% if linked_projects.count == 0 %}
-                                <a href='{% url 'sections.forum.views.linkProject' %}?threadId={{ thread_id }}'>Link Project</a>
+
+                            {%  if linked_projects.count > 0 %}
+                                <table>
+                                    <hr />
+                                    {% for lp in linked_projects %}
+                                        <tr>
+                                            <td><a href='{% url 'sections.projects.views.projectInfo' %}?projId={{ lp.project.id }}'>{{ lp.project.name }}</a></td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
                             {% endif %}
-                            <table>
-                                {% for lp in linked_projects %}
-                                    <tr>
-                                        <td><a href='{% url 'sections.projects.views.projectInfo' %}?projId={{ lp.project.id }}'>{{ lp.project.name }}</a></td>
-                                    </tr>
-                                {% endfor %}
-                            </table>
                         {% endif %}
                     </td>
                 </tr>

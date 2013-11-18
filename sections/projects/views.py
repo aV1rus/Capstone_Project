@@ -53,6 +53,39 @@ def addNew(request):
 
     return render(request, "home/projects/addNew.html", locals())
 
+@login_required(login_url="login.views.connect")
+def editProject(request):
+    # form = CreateProjectForm()
+    error = False
+    message = ''
+    if request.method == "GET":
+        if request.GET:
+            project_id = request.GET['projId']
+            project = Projects.objects.get(id=project_id)
+            form = CreateProjectForm(initial={'title': project.name, 'description': project.description})
+
+    if request.method == "POST":
+        form = CreateProjectForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data['title']
+            description = form.cleaned_data['description']
+
+            project_id = request.GET['projId']
+            project = Projects.objects.get(id=project_id)
+            project.name = title
+            project.description = description
+            project.save()
+            #Add to newsfeed
+            Project_URL = Constants.ROOT_URL(request.path)+"/home/projects/project_info?projId="+str(project_id)
+            PROJECT_VIEW = 'sections.projects.views.projectInfo'
+            PROJECT_PARAMS = "?projId="+str(project_id)
+            NewsFeed(user=request.user, title=Constants.NEWSFEED_PROJECT_EDIT.format(request.user, title), view=PROJECT_VIEW, params=PROJECT_PARAMS).save()
+            return redirect(Project_URL)
+        else:
+            message = 'Fields incomplete.'
+            error = True
+
+    return render(request, "home/projects/addNew.html", locals())
 
 @login_required(login_url="login.views.connect")
 def projectInfo(request):
@@ -76,11 +109,13 @@ def projectInfo(request):
                 files = FileUpdates.objects.filter(file_ref=p).order_by('-created_at')
                 if files:
                     p.newest_file = files[0]
+                    p.file_count = files.count()
 
-        linked_projects = ProjectForum.objects.filter(project=project)
-        for lp in linked_projects:
-            comment_list = Comments.objects.filter(thread_ref=lp.thread).order_by("-created_at")[:1]
-            lp.thread.title = comment_list[0].title
+            linked_projects = ProjectForum.objects.filter(project=project)
+
+            for lp in linked_projects:
+                comment_list = Comments.objects.filter(thread_ref=lp.thread).order_by("-created_at")[:1]
+                lp.thread.title = comment_list[0].title
 
     return render(request, 'home/projects/project_info.html', locals())
 

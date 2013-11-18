@@ -6,15 +6,17 @@
 {% endblock %}
 
 {% block user_content %}
-    <h1>All Projects</h1>
-    <a class='nav_link' href='{% url 'sections.projects.views.addNew' %}'>Create New Project</a>
+    <div class='title_buttons'>
+        <span>All Projects</span>
+        <a href='{% url 'sections.projects.views.addNew' %}'>Create New Project</a>
 
+    </div>
     <section class="main_with_right_menu">
 
-     <form name="search" class="form-search" method="get" action="#">
-        <input name="searchFilter" type="text" class="search-query input-large" {#onkeypress="return submitenter(this,event)" #} value='{{ searchFilter }}'>
-        <button type="submit" class="btn btn-primary">Search</button>
-    </form>
+        <form name="search" class="form-search" method="get" action="#">
+            <input name="searchFilter" type="text" class="search-query input-large" {#onkeypress="return submitenter(this,event)" #} value='{{ searchFilter }}'>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
 
         <table class='padd_table'>
             <tr class='header'>

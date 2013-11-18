@@ -4,9 +4,10 @@
 {% block user_content %}
 
     <section id="proj_container">
-    <a href="{% url 'sections.projects.views.projectInfo' %}?projId={{ project.id }}" class="nav_link"> < Back</a>
-
-        <h1>{{ project.name }}</h1>
+        <div class='title_buttons'>
+            <a class='back' href="{% url 'sections.projects.views.projectInfo' %}?projId={{ project.id }}" > < Back</a>
+            <span>{{ project.name }}</span>
+        </div>
 
         <form action="" method="POST" enctype="multipart/form-data">
             <table>

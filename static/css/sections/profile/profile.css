@@ -1,0 +1,22 @@
+#top
+{
+    height: 220px;
+}
+#top img
+{
+    height: 200px;
+}
+#user_info
+{
+    padding: 20px 10px;
+    height: 220;
+    overflow-y: scroll;
+}
+#table_divs table
+{
+       padding-left: 30px;
+}
+#top div, #top img
+{
+    float:left;
+}

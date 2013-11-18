@@ -6,10 +6,12 @@
 {% endblock %}
 {% block user_content %}
 
-    <a href="{% url 'sections.projects.views.projectInfo' %}?projId={{ file.project_ref.id }}" class="nav_link"> < Back</a>
-    <a href="{% url 'sections.projects.views.fileUpdate' %}?fileId={{ file.id }}" class="nav_link"> Upload </a>
+    <div class='title_buttons'>
+    <a href="{% url 'sections.projects.views.projectInfo' %}?projId={{ file.project_ref.id }}" class="back"> < Back</a>
+    <span>{{ file.name }}</span>
+    <a href="{% url 'sections.projects.views.fileUpdate' %}?fileId={{ file.id }}"> Upload </a>
+    </div>
 
-    <h1>{{ file.name }}</h1>
     {{ file.description|linebreaks }}<br/><br/>
     <section>
         <table id='file_commit_table' class='padd_table'>

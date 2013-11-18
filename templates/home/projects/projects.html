@@ -6,12 +6,13 @@
 {% endblock %}
 
 {% block user_content %}
-    <a class='nav_link' href='{% url 'sections.projects.views.addNew' %}'>Create New Project</a>
-    <a class='nav_link' href='{% url 'sections.projects.views.allProjects' %}'>View All Projects</a>
-
+    <div class='title_buttons'>
+        <span>Projects You Own</span>
+        <a href='{% url 'sections.projects.views.addNew' %}'>Create New Project</a>
+        <a href='{% url 'sections.projects.views.allProjects' %}'>View All Projects</a>
+    </div>
     <section class="main_with_right_menu">
         {% if owned_project_list.count > 0 %}
-            <h1>Projects You Own</h1>
             <table class='padd_table'>
                 <tr class='header'>
                     <td> Name </td>
@@ -29,7 +30,7 @@
             </table>
         {% endif %}
 
-    {% if contrib_projects.count > 0 %}<br/>
+        {% if contrib_projects.count > 0 %}<br/>
             <h1>Projects You Contribute To</h1>
             <table class='padd_table'>
                 <tr class='header'>

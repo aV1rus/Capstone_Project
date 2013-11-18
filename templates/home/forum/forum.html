@@ -2,13 +2,11 @@
 {% load static %}
 
 {% block user_content %}
-    <h1>Forum</h1>
+    <div class='title_buttons'>
+    <span>Forum</span>
+            <a href='{% url 'sections.forum.views.findUsers' %}' title="Search for Users">Find Users</a>
+    </div>
 
-    <!-- <div id='right_main'>
-        <ul id="nav-right">-->
-            <a href='{% url 'sections.forum.views.findUsers' %}' title="Search for Users" class = 'nav_link'>Find Users</a>
-       <!-- </ul>
-    </div>-->
 
     <section class='main_with_right_menu' id='forum_main'>
 

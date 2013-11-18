@@ -6,16 +6,11 @@
 {% endblock %}
 
 {% block user_content %}
-
-    <a href='{% url 'sections.forum.views.forum' %}' class="nav_link">< Back</a>
-    {% comment %}
-    <div id='right_main'>
-        <ul id="nav-right">
-            <li><a href='threads/new?catId={{ category_id }}'>New Thread</a></li>
-        </ul>
+    <div class='title_buttons'>
+        <a href='{% url 'sections.forum.views.forum' %}' class="back">< Back</a>
+        <span> Thread List </span>
     </div>
-    {% endcomment %}
-    <h1> Thread List </h1>
+
     <div class = 'proj_nav'>
         <a href='{% url 'sections.forum.views.thread_new' %}?catId={{ category_id }}'>New Thread</a>
     </div>

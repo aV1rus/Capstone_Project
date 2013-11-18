@@ -2,9 +2,11 @@
 
 {% block user_content %}
 
-    <a href="{% url 'sections.projects.views.projects' %}" class="nav_link"> < Back</a>
+    <div class='title_buttons'>
+        <a href="{% url 'sections.projects.views.projects' %}" class="back"> < Back</a>
+        <span>{{ project.name }}</span>
+    </div>
 
-    <h1>{{ project.name }}</h1>
     {% include "home/projects/includes/proj_menu.html" %}
 
     <section class='main_with_right_menu'>
