@@ -216,6 +216,7 @@ h1
 }
 .title_buttons .back
 {
+    margin-top: 5px;
     margin-left: 5px;
     position: absolute;
 }
@@ -224,7 +225,7 @@ h1
     -moz-box-shadow:inset 0px 1px 0px 0px #dcecfb;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #dcecfb;
 	box-shadow:inset 0px 1px 0px 0px #dcecfb;
-
+    margin-bottom: 5px;
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #bddbfa), color-stop(1, #80b5ea) );
 	background:-moz-linear-gradient( center top, #bddbfa 5%, #80b5ea 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bddbfa', endColorstr='#80b5ea');
