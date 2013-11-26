@@ -18,9 +18,9 @@
         <div id='left_div'>
             <img id='proj_img' src="{{ MEDIA_URL }}{{ project.user.profile.picture }}" />
             <ul id='proj_contr'>
-                <li>{{ project.user.username }}</li>
+                <li><a href='{% url 'sections.user_profile.views.userProfile' %}?userId={{ project.user.id }}'>{{ project.user.username }}</a></li>
                 {% for u in user_list %}
-                    <li>{{ u.user.username }}</li>
+                    <li><a href='{% url 'sections.user_profile.views.userProfile' %}?userId={{ u.user.id }}'>{{ u.user.username }}</a></li>
                 {% endfor %}
                 {%  if is_member %}
                     <li><br/>

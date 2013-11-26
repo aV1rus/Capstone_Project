@@ -38,7 +38,7 @@
                 <tr class='option'><td>
                     <a href='?projId={{ project_id }}&userId={{ u.id }}&searchFilter='>Invite</a>
                 </td><td>
-                    <a href='/home/user_profile?userId={{ u.id }}'>{{ u.username }}</a>
+                    <a href='{% url 'sections.user_profile.views.userProfile' %}?userId={{ u.id }}'>{{ u.username }}</a>
                 </td><td>
                     {{ u.email }}
                 </td><td>

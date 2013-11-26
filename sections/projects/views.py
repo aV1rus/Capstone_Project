@@ -114,7 +114,7 @@ def projectInfo(request):
             linked_projects = ProjectForum.objects.filter(project=project)
 
             for lp in linked_projects:
-                comment_list = Comments.objects.filter(thread_ref=lp.thread).order_by("-created_at")[:1]
+                comment_list = Comments.objects.filter(thread_ref=lp.thread).order_by("created_at")[:1]
                 lp.thread.title = comment_list[0].title
 
     return render(request, 'home/projects/project_info.html', locals())
